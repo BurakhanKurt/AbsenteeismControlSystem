@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Entities.Layer.Models
 {
@@ -12,5 +13,6 @@ namespace Entities.Layer.Models
         public String? Description { get; set; }
         public DateTime? ExamTime { get; set; }
         public Course Course { get; set; }
+        public ICollection<CourseCalendar> CourseCalendars { get; set; }
     }
 }

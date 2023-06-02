@@ -15,9 +15,13 @@ namespace Entities.Layer.Models
 
         [ForeignKey(nameof(Day))]
         public byte DayId { get; set; }
+
+        [ForeignKey(nameof(CourseDetail))]
+        public int DetailId { get; set; }
         public TimeOnly StartTime { get; set; }
         public TimeOnly EndTime { get; set; }
         public Course Course { get; set; }
         public Day Day { get; set; }
+        public CourseDetail CourseDetail { get; set; }
     }
 }

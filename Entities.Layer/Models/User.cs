@@ -14,7 +14,6 @@ namespace Entities.Layer.Models
         public DateTime? DeletedDate { get; set; }
         public bool isActive { get; set; }
         public bool isDeleted { get; set; }
-        public ICollection<CourseProgram> CoursePrograms { get; set; }
         public ICollection<Course> Courses { get; set; }
     }
 }
