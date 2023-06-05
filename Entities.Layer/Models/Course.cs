@@ -1,9 +1,9 @@
 ﻿
-
 namespace Entities.Layer.Models
 {
     public class Course : BaseEntity
     {
+        public int Id { get; set; }
         public String CourseName { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
