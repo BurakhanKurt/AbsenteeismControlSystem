@@ -1,4 +1,4 @@
-﻿using Repositories.Layer.Repositories.Abstract;
+﻿using Repositories.Layer.Repositories.Abstracts;
 
 namespace Repositories.Layer.Repositories.Concretes
 {
@@ -21,11 +21,8 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         public ICourseRepository Course => courseRepository;
-
         public ICourseDetailRepository CourseDetail => courseDetailRepository;
-
         public ICourseCalendarRepository CourseCalendar => courseCalendarRepository;
-
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

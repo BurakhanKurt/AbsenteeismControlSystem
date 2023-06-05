@@ -30,7 +30,7 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         //Kullanıcının bir dersinin detayını ve saatini getiren method
-        public async Task<Course> GetOneCourseByIdWithDetailAsync(int userId, int courseId, bool trackChanges)
+        public async Task<Course?> GetOneCourseByIdWithDetailAsync(int userId, int courseId, bool trackChanges)
         {
             var course = await GetByCondition(u => u.UserId == userId, trackChanges)
                 .Where(c => c.Id == courseId).
@@ -63,10 +63,7 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         public void CreateOneCourse(Course course) => Create(course);
-
         public void UpdateOneCourse(Course course) => Update(course);
-
         public void DeleteOneCourse(Course course) => Delete(course);
-
     }
 }

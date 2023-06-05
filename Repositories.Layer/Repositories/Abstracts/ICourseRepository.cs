@@ -1,6 +1,6 @@
 ﻿using Entities.Layer.Models;
 
-namespace Repositories.Layer.Repositories.Abstract
+namespace Repositories.Layer.Repositories.Abstracts
 {
     public interface ICourseRepository : IRepositoryBase<Course>
     {

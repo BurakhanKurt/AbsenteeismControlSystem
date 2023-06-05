@@ -29,11 +29,8 @@ namespace Repositories.Layer.Repositories.Concretes
             _context.Set<T>().Where(expression).AsNoTracking();
 
         public void Create(T entity) => _context.Set<T>().Add(entity);
-
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
-
         public void Update(T entity) => _context.Set<T>().Update(entity);
 
-        
     }
 }

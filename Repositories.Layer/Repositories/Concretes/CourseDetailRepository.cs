@@ -1,5 +1,5 @@
 ﻿using Entities.Layer.Models;
-using Repositories.Layer.Repositories.Abstract;
+using Repositories.Layer.Repositories.Abstracts;
 
 namespace Repositories.Layer.Repositories.Concretes
 {
@@ -8,7 +8,6 @@ namespace Repositories.Layer.Repositories.Concretes
         public CourseDetailRepository(AppDbContext context) : base(context)
         {
         }
-
         public void UpdateOneCourseDetail(CourseDetail courseDetail) => Update(courseDetail);
     }
 }

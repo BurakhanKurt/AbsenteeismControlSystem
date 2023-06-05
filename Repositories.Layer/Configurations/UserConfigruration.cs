@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Repositories.Layer.Configurations
 {
     public class UserConfigruration : IEntityTypeConfiguration<User>
@@ -16,9 +15,6 @@ namespace Repositories.Layer.Configurations
             builder.Property(x => x.isDeleted).IsRequired();
             builder.Property(x => x.isActive).IsRequired();
 
-            builder.HasMany(x => x.Courses)
-                   .WithOne(x => x.User);
-                   
             builder.ToTable("Users");
         }
     }

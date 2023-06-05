@@ -14,20 +14,10 @@ namespace Repositories.Layer.Configurations
             builder.Property(x => x.CreatedDate).IsRequired();
             builder.Property(x => x.isDeleted).IsRequired();
             builder.Property(x => x.isActive).IsRequired();
-            
-            builder.HasMany(x => x.CourseCalendars)
-                   .WithOne(x => x.Course)
-                   .IsRequired();
-
-            builder.HasOne(x => x.CourseDetail)
-                   .WithOne(x => x.Course)
-                   .IsRequired();
 
             builder.HasOne(x => x.User)
-                   .WithMany(x=> x.Courses)
-                   .IsRequired();
-
-
+                   .WithMany(x => x.Courses)
+                   .HasForeignKey(x => x.UserId);
 
             builder.ToTable("Courses");
         }

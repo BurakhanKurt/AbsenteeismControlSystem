@@ -1,4 +1,4 @@
-﻿namespace Repositories.Layer.Repositories.Abstract
+﻿namespace Repositories.Layer.Repositories.Abstracts
 {
     public interface IRepositoryManager
     {
