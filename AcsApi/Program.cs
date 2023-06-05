@@ -1,4 +1,5 @@
-using Repositories.Layer.Repositories.Abstract;
+using AcsApi.Extensions;
+using Repositories.Layer.Repositories.Abstracts;
 using Repositories.Layer.Repositories.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,16 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Todo Burada ki configureleri static class içine de yazabiliriz
-#region Configures
-
-//Repolarin çözülmesi 
-builder.Services.AddScoped<ICourseRepository, CourseRepository>();
-builder.Services.AddScoped<ICourseDetailRepository, CourseDetailRepository>();
-builder.Services.AddScoped<ICourseCalendarRepository, CourseCalendarRepository>();
-
-
-#endregion
+//Extensions
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.RegisterRepositories();
 
 var app = builder.Build();
 
