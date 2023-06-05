@@ -1,7 +1,7 @@
 ﻿using Entities.Layer.Models;
 
 
-namespace Repositories.Layer.Abstract
+namespace Repositories.Layer.Repositories.Abstract
 {
     public interface ICourseCalendarRepository : IRepositoryBase<CourseCalendar>
     {

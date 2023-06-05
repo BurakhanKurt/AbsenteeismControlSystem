@@ -1,7 +1,7 @@
 ﻿using Entities.Layer.Models;
-using Repositories.Layer.Abstract;
+using Repositories.Layer.Repositories.Abstract;
 
-namespace Repositories.Layer.Concretes
+namespace Repositories.Layer.Repositories.Concretes
 {
     public class CourseCalendarRepository : RepositoryBase<CourseCalendar>, ICourseCalendarRepository
     {

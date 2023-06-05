@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Repositories.Layer.Abstract
+namespace Repositories.Layer.Repositories.Abstracts
 {
     public interface IRepositoryBase<T> where T : class
     {
         IQueryable<T> GetAll(bool trackChanges);
-        IQueryable<T> GetById(Expression<Func<T,bool>> expression,bool trackChanges);
+
+        // TODO neden list donuyor
+        IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
+
         void Update(T entity);
         void Delete(T entity);
         void Create(T entity);

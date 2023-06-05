@@ -1,6 +1,5 @@
 ﻿using Entities.Layer.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Repositories.Layer.Configurations
@@ -27,6 +26,8 @@ namespace Repositories.Layer.Configurations
             builder.HasOne(x => x.User)
                    .WithMany(x=> x.Courses)
                    .IsRequired();
+
+
 
             builder.ToTable("Courses");
         }

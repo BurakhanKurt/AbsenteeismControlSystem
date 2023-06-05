@@ -1,5 +1,5 @@
-using Repositories.Layer.Abstract;
-using Repositories.Layer.Concretes;
+using Repositories.Layer.Repositories.Abstract;
+using Repositories.Layer.Repositories.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 

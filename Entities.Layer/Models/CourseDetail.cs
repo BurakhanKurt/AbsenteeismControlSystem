@@ -13,6 +13,6 @@ namespace Entities.Layer.Models
         public String? Description { get; set; }
         public DateTime? ExamTime { get; set; }
         public Course Course { get; set; }
-        public ICollection<CourseCalendar> CourseCalendars { get; set; }
+
     }
 }

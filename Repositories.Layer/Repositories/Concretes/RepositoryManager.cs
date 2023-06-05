@@ -1,6 +1,6 @@
-﻿using Repositories.Layer.Abstract;
+﻿using Repositories.Layer.Repositories.Abstract;
 
-namespace Repositories.Layer.Concretes
+namespace Repositories.Layer.Repositories.Concretes
 {
     public class RepositoryManager : IRepositoryManager
     {
@@ -14,10 +14,10 @@ namespace Repositories.Layer.Concretes
             ICourseDetailRepository courseDetailRepository,
             ICourseCalendarRepository courseCalendarRepository)
         {
-            _context=context;
-            this.courseRepository=courseRepository;
-            this.courseDetailRepository=courseDetailRepository;
-            this.courseCalendarRepository=courseCalendarRepository;
+            _context = context;
+            this.courseRepository = courseRepository;
+            this.courseDetailRepository = courseDetailRepository;
+            this.courseCalendarRepository = courseCalendarRepository;
         }
 
         public ICourseRepository Course => courseRepository;
