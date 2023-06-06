@@ -30,12 +30,11 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         //Kullanıcının bir dersinin detayını ve saatini getiren method
-        public async Task<Course?> GetOneCourseByIdWithDetailAsync(int userId, int courseId, bool trackChanges)
+        public async Task<Course?> GetOneCourseByIdWithDetailAsync( int courseId, bool trackChanges)
         {
-            var course = await GetByCondition(u => u.UserId == userId, trackChanges)
-                .Where(c => c.Id == courseId).
-                Include(d => d.CourseDetail).
-                    Include(c=> c.CourseCalendars.Select( d => new
+            var course = await GetByCondition(c => c.Id == courseId, trackChanges)
+                .Include(d => d.CourseDetail)
+                    .Include(c=> c.CourseCalendars.Select( d => new
                     {
                         d.StartTime , d.EndTime
                     }))
@@ -43,27 +42,27 @@ namespace Repositories.Layer.Repositories.Concretes
             return course;
         }
 
-        //Kullanıcının bir dersinin hangi gunlerde oldugunu getiren method
-        public async Task<Course?> GetOneCourseByIdWithDaysAsync(int userId, int courseId, bool trackChanges)
+        //dersin hangi gunlerde oldugunu getiren method
+        public async Task<Course?> GetOneCourseByIdWithDaysAsync(int courseId, bool trackChanges)
         {
             var course = await
                 GetByCondition(c => c.Id == courseId, trackChanges).
                 Include(c => c.CourseCalendars)
                     .ThenInclude(d => d.Day.DayName)
-                .SingleOrDefaultAsync(u => u.UserId == userId);
+                .SingleOrDefaultAsync();
             return course;
         }
 
-        //Kullanıcının bir dersini getiren method
-        public async Task<Course?> GetOneCourseByIdAsync(int userId, int courseId, bool trackChanges)
+        //bir dersi getiren method
+        public async Task<Course?> GetOneCourseByIdAsync(int courseId, bool trackChanges)
         {
             var course = await GetByCondition(c => c.Id == courseId, trackChanges).
-                SingleOrDefaultAsync(u => u.UserId == userId);
+                SingleOrDefaultAsync();
             return course;
         }
 
         public void CreateOneCourse(Course course) => Create(course);
-        public void UpdateOneCourse(Course course) => Update(course);
-        public void DeleteOneCourse(Course course) => Delete(course);
+        public void UpdateOneCourse(Course course, bool trackChanges) => Update(course);
+        public void DeleteOneCourse(Course course, bool trackChanges) => Delete(course);
     }
 }
