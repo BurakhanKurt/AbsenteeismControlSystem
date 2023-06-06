@@ -1,9 +1,18 @@
 ﻿using Entities.Layer.Models;
 
-namespace Repositories.Layer.Repositories.Abstracts
+namespace Service.Layer.Abstracts
 {
-    public interface ICourseRepository : IRepositoryBase<Course>
+    public interface ICourseService
     {
+        // Bir kursu asenkron olarak oluşturur
+        Task<Course> CreateOneCourseAsync(Course course);
+
+        // Bir kursu asenkron olarak günceller
+        Task<Course> UpdateOneCourseAsync(int courseId, Course course, bool trackChanges);
+
+        // Bir kursu asenkron olarak siler
+        Task DeleteOneCourseAsync(int id, bool trackChanges);
+
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
         Task<IEnumerable<Course>> GetAllCourseByUserAsync(int userId, bool trackChanges);
 
@@ -18,17 +27,6 @@ namespace Repositories.Layer.Repositories.Abstracts
 
         // Belirli bir kursu asenkron olarak kurs idsine göre getirir
         Task<Course> GetOneCourseByIdAsync(int courseId, bool trackChanges);
-
-        // Bir kursu asenkron olarak oluşturur
-        Task CreateOneCourseAsync(Course course);
-
-        // Bir kursu senkron olarak oluşturur
-        void CreateOneCourse(Course course);
-
-        // Bir kursu günceller
-        void UpdateOneCourse(Course course);
-
-        // Bir kursu siler
-        void DeleteOneCourse(Course course);
     }
 }
+

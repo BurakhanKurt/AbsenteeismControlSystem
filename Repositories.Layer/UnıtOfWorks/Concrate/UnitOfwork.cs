@@ -16,7 +16,7 @@ namespace Repositories.Layer.UnıtOfWorks.Concrate
             await _context.SaveChangesAsync();
         }
 
-        public void commit()
+        public void Commit()
         {
             _context.SaveChanges();
         }

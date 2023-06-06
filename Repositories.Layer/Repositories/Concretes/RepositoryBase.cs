@@ -28,9 +28,12 @@ namespace Repositories.Layer.Repositories.Concretes
             _context.Set<T>().Where(expression).AsTracking() :
             _context.Set<T>().Where(expression).AsNoTracking();
 
+        public async Task CreateAsync(T entity)
+        {
+            await _context.Set<T>().AddAsync(entity);
+        }
         public void Create(T entity) => _context.Set<T>().Add(entity);
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
         public void Update(T entity) => _context.Set<T>().Update(entity);
-
     }
 }
