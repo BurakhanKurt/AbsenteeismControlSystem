@@ -30,7 +30,7 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         //Kullanıcının bir dersinin detayını ve saatini getiren method
-        public async Task<Course?> GetOneCourseByIdWithDetailAsync( int courseId, bool trackChanges)
+        public async Task<Course?> GetOneCourseByIdWithDetailAsync(int courseId, bool trackChanges)
         {
             var course = await GetByCondition(c => c.Id == courseId, trackChanges)
                 .Include(d => d.CourseDetail)

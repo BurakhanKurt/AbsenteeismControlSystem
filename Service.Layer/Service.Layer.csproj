@@ -10,9 +10,4 @@
     <ProjectReference Include="..\Repositories.Layer\Repositories.Layer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstracts\" />
-    <Folder Include="Concretes\" />
-  </ItemGroup>
-
 </Project>
