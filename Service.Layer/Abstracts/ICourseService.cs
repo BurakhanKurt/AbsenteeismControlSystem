@@ -5,7 +5,7 @@ namespace Service.Layer.Abstracts
     public interface ICourseService
     {
         // Bir kursu asenkron olarak oluşturur
-        Task<Course> CreateOneCourseAsync(Course course);
+        Task<Course> CreateOneCourseAsync(int userId,Course course);
 
         // Bir kursu asenkron olarak günceller
         Task<Course> UpdateOneCourseAsync(int courseId, Course course, bool trackChanges);

@@ -1,3 +1,4 @@
+using AcsApi.AutoMapper;
 using AcsApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 //Extensions
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.RegisterRepositories();
 builder.Services.ConfigureServices();
+
 
 var app = builder.Build();
 
