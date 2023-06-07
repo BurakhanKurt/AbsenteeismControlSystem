@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities.Layer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
 namespace Presentation.Layer.Controllers
@@ -13,10 +14,14 @@ namespace Presentation.Layer.Controllers
             _manager=manager;
         }
 
-        [HttpGet] 
-        public async Task<IActionResult> GetDetails()
+        [HttpPut("{id:int}")] 
+        public async Task<IActionResult> UpdateDetailAsync([FromRoute(Name = "id")]int id,
+            [FromBody]CourseDetail courseDetail)
         {
-            return BadRequest();
+            await _manager
+                .CourseDetailService
+                .UpdateOneCourseDetailAsync(id,courseDetail,false);
+            return Ok(courseDetail);
         }
     }
 }

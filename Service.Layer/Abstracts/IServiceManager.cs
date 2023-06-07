@@ -11,7 +11,7 @@ namespace Service.Layer.Abstracts
         ICourseService CourseServices { get; }
         ICourseDetailService CourseDetailService { get; }
         ICourseCalendarService CourseCalendarService { get; }
-        ISyllebusService SyllebusService { get; }
+        ISyllabusService SyllebusService { get; }
 
     }
 }

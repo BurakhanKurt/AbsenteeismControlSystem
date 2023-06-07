@@ -13,7 +13,7 @@ namespace Service.Layer.Concretes
             _manager=manager;
         }
 
-        public async Task UpdateOneCourseDetail(int courseId, CourseDetail courseDetail, bool trackChanges)
+        public async Task UpdateOneCourseDetailAsync(int courseId, CourseDetail courseDetail, bool trackChanges)
         {
             var entity = await _manager.CourseDetail.GetOneCourseDetailByIdAsync(courseId, trackChanges);
             // Todo Hata yonetimi yapılacak

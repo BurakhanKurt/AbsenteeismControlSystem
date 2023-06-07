@@ -1,6 +1,4 @@
 using AcsApi.Extensions;
-using Repositories.Layer.Repositories.Abstracts;
-using Repositories.Layer.Repositories.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +12,7 @@ builder.Services.AddSwaggerGen();
 //Extensions
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.RegisterRepositories();
+builder.Services.ConfigureServices();
 
 var app = builder.Build();
 

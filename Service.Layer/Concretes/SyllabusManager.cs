@@ -4,11 +4,11 @@ using Service.Layer.Abstracts;
 
 namespace Service.Layer.Concretes
 {
-    public class SyllebusManager : ISyllebusService
+    public class SyllabusManager : ISyllabusService
     {
         private readonly IRepositoryManager _manager;
 
-        public SyllebusManager(IRepositoryManager manager)
+        public SyllabusManager(IRepositoryManager manager)
         {
             _manager=manager;
         }
