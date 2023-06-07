@@ -11,4 +11,3 @@ namespace Entities.Layer.Models
         public ICollection<CourseCalendar> CourseCalendars { get; set; }
     }
 }
-2468Azure1350

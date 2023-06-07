@@ -1,11 +1,6 @@
 ﻿using Entities.Layer.Models;
 using Repositories.Layer.Repositories.Abstracts;
 using Service.Layer.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Layer.Concretes
 {
