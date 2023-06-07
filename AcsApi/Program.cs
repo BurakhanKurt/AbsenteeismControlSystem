@@ -10,11 +10,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 //Extensions
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.RegisterRepositories();
 builder.Services.ConfigureServices();
 builder.Services.AddAutoMapper(typeof(MapProfile));
+
 
 var app = builder.Build();
 

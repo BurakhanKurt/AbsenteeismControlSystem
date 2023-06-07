@@ -10,6 +10,6 @@ namespace AcsApi.AutoMapper
         {
             CreateMap<CourseDetailDto, CourseDetail>();
 
-        }
     }
+}
 }
