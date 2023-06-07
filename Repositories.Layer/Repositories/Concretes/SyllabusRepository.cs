@@ -9,7 +9,7 @@ namespace Repositories.Layer.Repositories.Concretes
         public SyllabusRepository(AppDbContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<Day>> GetSyllabusAsyncByUserId(int userId, bool trackChanges)
+        public async Task<IEnumerable<Day>> GetSyllabusAsyncByUserIdAsync(int userId, bool trackChanges)
         {
             var days = await GetAll(trackChanges).OrderBy(d => d.Id)
                 .Include(c=> c.CourseCalendars.Select(c => new

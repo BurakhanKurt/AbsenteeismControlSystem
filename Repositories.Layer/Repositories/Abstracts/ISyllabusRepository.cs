@@ -4,6 +4,6 @@ namespace Repositories.Layer.Repositories.Abstracts
 {
     public interface ISyllabusRepository : IRepositoryBase<Day>
     {
-        Task<IEnumerable<Day>> GetSyllabusAsyncByUserId(int userId, bool trackChanges);
+        Task<IEnumerable<Day>> GetSyllabusAsyncByUserIdAsync(int userId, bool trackChanges);
     }
 }

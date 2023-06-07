@@ -59,17 +59,16 @@ namespace Repositories.Layer.Repositories.Concretes
 
         // Bir kursu senkron olarak oluşturur
         public void CreateOneCourse(Course course) => Create(course);
-
+        
+        // Bir kursu asenkron olarak oluşturur
+        public async Task CreateOneCourseAsync(Course course) => await CreateAsync(course);
+        
         // Bir kursu günceller
         public void UpdateOneCourse(Course course) => Update(course);
 
         // Bir kursu siler
         public void DeleteOneCourse(Course course) => Delete(course);
 
-        // Bir kursu asenkron olarak oluşturur
-        public async Task CreateOneCourseAsync(Course course)
-        {
-            await CreateAsync(course);
-        }
+        
     }
 }
