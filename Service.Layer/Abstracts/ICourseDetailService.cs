@@ -1,9 +1,10 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Layer.DTOs.CourseDetailDtos;
+using Entities.Layer.Models;
 
 namespace Service.Layer.Abstracts
 {
     public interface ICourseDetailService 
     {
-        Task UpdateOneCourseDetailAsync(int courseDetailId,CourseDetail courseDetail,bool trackChanges);       
+        Task UpdateOneCourseDetailAsync(int courseDetailId,CourseDetailDto courseDetailDto,bool trackChanges);       
     }
 }

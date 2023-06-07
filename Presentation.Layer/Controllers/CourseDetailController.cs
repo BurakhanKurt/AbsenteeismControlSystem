@@ -1,4 +1,5 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Layer.DTOs.CourseDetailDtos;
+using Entities.Layer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
@@ -16,12 +17,12 @@ namespace Presentation.Layer.Controllers
 
         [HttpPut("{id:int}")] 
         public async Task<IActionResult> UpdateDetailAsync([FromRoute(Name = "id")]int id,
-            [FromBody]CourseDetail courseDetail)
+            [FromBody]CourseDetailDto courseDetailDto)
         {
             await _manager
                 .CourseDetailService
-                .UpdateOneCourseDetailAsync(id,courseDetail,false);
-            return Ok(courseDetail);
+                .UpdateOneCourseDetailAsync(id, courseDetailDto, false);
+            return NoContent();
         }
     }
 }

@@ -1,3 +1,4 @@
+using AcsApi.AutoMapper;
 using AcsApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.RegisterRepositories();
 builder.Services.ConfigureServices();
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 var app = builder.Build();
 
