@@ -9,7 +9,6 @@ namespace AcsApi.AutoMapper
         public MapProfile()
         {
             CreateMap<CourseDetailDto, CourseDetail>();
-
+        }
     }
-}
 }

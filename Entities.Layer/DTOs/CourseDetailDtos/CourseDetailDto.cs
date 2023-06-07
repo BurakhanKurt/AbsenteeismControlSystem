@@ -22,8 +22,8 @@ namespace Entities.Layer.DTOs.CourseDetailDtos
         [JsonIgnore]
         public DateTime? HardDeletedDate { get; set; }
         [JsonIgnore]
-        public bool isActive { get; set; }
+        public bool isActive { get; set; } = true;
         [JsonIgnore]
-        public bool isDeleted { get; set; }
+        public bool isDeleted { get; set; } = false;
     }
 }
