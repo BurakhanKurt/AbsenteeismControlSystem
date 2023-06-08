@@ -22,7 +22,7 @@ namespace Service.Layer.Concretes
             var entity = await _manager.CourseDetail.GetOneCourseDetailByIdAsync(courseId, trackChanges);
             // Todo Hata yonetimi yapılacak
 
-            entity = _mapper.Map<CourseDetail>(courseDetailDto);
+            entity = _mapper.Map(courseDetailDto,entity);
             entity.UpdateDate = DateTime.Now;  
 
             _manager.CourseDetail.UpdateOneCourseDetail(entity);

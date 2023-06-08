@@ -16,6 +16,7 @@ namespace Service.Layer.Concretes
         // Bir kursu asenkron olarak oluşturur
         public async Task<Course> CreateOneCourseAsync(Course course)
         {
+            course.CreatedDate = DateTime.Now;
             await _repositoryManager.Course.CreateOneCourseAsync(course);
             await _repositoryManager.SaveAsync();
             return course;

@@ -5,6 +5,7 @@ namespace Service.Layer.Abstracts
 {
     public interface ICourseDetailService 
     {
-        Task UpdateOneCourseDetailAsync(int courseDetailId,CourseDetailDto courseDetailDto,bool trackChanges);       
+        Task UpdateOneCourseDetailAsync(int courseDetailId,CourseDetailDto courseDetailDto,bool trackChanges);
+        
     }
 }
