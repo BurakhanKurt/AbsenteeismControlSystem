@@ -4,7 +4,8 @@ namespace Repositories.Layer.Repositories.Abstracts
 {
     public interface ICourseCalendarRepository : IRepositoryBase<CourseCalendar>
     {
-        Task<CourseCalendar> GetOneCourseCalendarByIdAsync(int courseId, int dayId, bool trackChanges);
+        Task<IEnumerable<CourseCalendar>> GetAllCourseCalendarAsync(int courseId, bool trackChanges);
+        Task<CourseCalendar> GetOneCourseCalendarByIdAsync(int courseId, byte dayId, bool trackChanges);
         void UpdateOneCourseCalendar(CourseCalendar courseCalendar);
         void DeleteOneCourseCalendar(CourseCalendar courseCalendar);
     }
