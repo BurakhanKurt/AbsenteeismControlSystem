@@ -1,7 +1,5 @@
 ﻿
-using Entities.Layer.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Entities.Layer.DTOs.CourseDetailDtos
 {
@@ -12,6 +10,6 @@ namespace Entities.Layer.DTOs.CourseDetailDtos
         public byte AbsenceLimit { get; set; }
         public byte CurrentAbsence { get; set; }
         public String? Description { get; set; }
-    
+        public DateTime? ExamTime { get; set; }
     }
 }
