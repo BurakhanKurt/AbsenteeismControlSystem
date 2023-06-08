@@ -1,12 +1,11 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Layer.DTOs.CourseDtos.Response;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
-
 
 namespace Presentation.Layer.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]s")]
     public class CourseController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
@@ -15,14 +14,42 @@ namespace Presentation.Layer.Controllers
             _serviceManager = serviceManager;
         }
 
-        [HttpPost(Name = "CreateOneCourseAsync")]
-        public async Task<IActionResult> CreateOneCourseAsync (int userId,[FromBody]Course course)
+        [HttpPost("create/{user:int}")]
+        public async Task<IActionResult> CreateOneCourseAsync ([FromRoute(Name = "user")] int userId ,[FromBody] CourseDto courseCreateDto)
         {
-            await _serviceManager.CourseServices.CreateOneCourseAsync(course);
+            var course = await _serviceManager.CourseServices.CreateOneCourseAsync(userId, courseCreateDto);
             return StatusCode(201,course);
         }
 
-        
+        [HttpGet("one/{id:int}")]
+        public async Task<IActionResult> GetOneCourse([FromRoute(Name = "id")] int courseId)
+        {
+            var course = await _serviceManager.CourseServices.GetOneCourseByIdAsync(courseId, false);
+            return StatusCode(200,course);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteOneCourseById([FromRoute(Name = "id")] int courseId)
+        {
+            await _serviceManager.CourseServices.DeleteOneCourseAsync(courseId, false);
+
+            return NoContent(); 
+        }
+
+        [HttpGet("byuser/{user:int}")]
+        public async Task<IActionResult> GetAllCourseByUserAsync([FromRoute(Name = "user")] int userId)
+        {
+            var courses = await _serviceManager.CourseServices.GetAllCourseByUserAsync(userId, false);
+            return Ok(courses);
+        }
+
+
+        [HttpGet("usertoday")]
+        public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] byte dayId)
+        {
+            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(1,dayId, false);
+            return Ok(courses);
+        }
 
 
     }

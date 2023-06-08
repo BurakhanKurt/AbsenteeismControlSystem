@@ -7,8 +7,8 @@ namespace Repositories.Layer.Repositories.Abstracts
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
         Task<IEnumerable<Course>> GetAllCourseByUserAsync(int userId, bool trackChanges);
 
-        // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
-        Task<IEnumerable<Course>> GetAllUserCoursesByDayAsync(int userId, int dayId, bool trackChanges);
+        // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları saati ile asenkron olarak getirir
+        Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges);
 
         // Detaylarıyla birlikte belirli bir kursu asenkron olarak getirir
         Task<Course> GetOneCourseByIdWithDetailAsync(int courseId, bool trackChanges);

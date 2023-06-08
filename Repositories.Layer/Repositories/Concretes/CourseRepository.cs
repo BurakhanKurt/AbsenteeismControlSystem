@@ -13,13 +13,13 @@ namespace Repositories.Layer.Repositories.Concretes
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
         public async Task<IEnumerable<Course>> GetAllCourseByUserAsync(int userId, bool trackChanges)
         {
-            var courses = await GetByCondition(c => c.UserId == userId, trackChanges)
+            var courses = await GetByCondition(c => c.UserId == userId, trackChanges).Include(x => x.CourseDetail)
                 .ToListAsync();
             return courses;
         }
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
-        public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAsync(int userId, int dayId, bool trackChanges)
+        public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges)
         {
             var courses = await GetByCondition(u => u.UserId == userId, trackChanges)
                 .Include(c => c.CourseCalendars)
@@ -52,7 +52,7 @@ namespace Repositories.Layer.Repositories.Concretes
         // Belirli bir kursu asenkron olarak kurs idsine göre getirir
         public async Task<Course> GetOneCourseByIdAsync(int courseId, bool trackChanges)
         {
-            var course = await GetByCondition(c => c.Id == courseId, trackChanges)
+            var course = await GetByCondition(c => c.Id == courseId, trackChanges).Include(x=> x.CourseDetail)
                 .SingleOrDefaultAsync();
             return course;
         }

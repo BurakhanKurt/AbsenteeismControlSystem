@@ -12,9 +12,7 @@ namespace Repositories.Layer.Configurations
             
             builder.Property(x => x.CourseName).IsRequired().HasMaxLength(20);
             builder.Property(x => x.CreatedDate).IsRequired();
-            builder.Property(x => x.isDeleted).IsRequired();
-            builder.Property(x => x.isActive).IsRequired();
-
+       
             builder.HasOne(x => x.User)
                    .WithMany(x => x.Courses)
                    .HasForeignKey(x => x.UserId);

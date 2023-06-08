@@ -11,8 +11,6 @@ namespace Repositories.Layer.Configurations
             builder.HasKey(x => x.CourseId);
 
             builder.Property(x => x.CreatedDate).IsRequired();
-            builder.Property(x => x.isDeleted).IsRequired();
-            builder.Property(x => x.isActive).IsRequired();
 
             builder.Property(x => x.Description).HasMaxLength(150);
             builder.Property(x => x.AbsenceLimit).IsRequired();
