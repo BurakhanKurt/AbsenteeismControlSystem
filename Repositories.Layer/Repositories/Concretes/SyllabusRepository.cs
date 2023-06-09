@@ -11,12 +11,11 @@ namespace Repositories.Layer.Repositories.Concretes
         }
         public async Task<IEnumerable<Day>> GetSyllabusAsyncByUserIdAsync(int userId, bool trackChanges)
         {
-            var days = await GetAll(trackChanges).OrderBy(d => d.Id)
-                .Include(c=> c.CourseCalendars.Select(c => new
-                {
-                    c.StartTime, c.EndTime, c.Course
-                }))
-                .ThenInclude(c=> c.Course.CourseName).Where(c=> c.Id == userId)
+            var days = await GetAll(trackChanges)
+                .Where(d => d.CourseCalendars.Any(a => a.Course.UserId == userId))
+                .OrderBy(d => d.Id)
+                .Include(c => c.CourseCalendars)
+                    .ThenInclude(a => a.Course)
                 .ToListAsync();
             return days;
         }

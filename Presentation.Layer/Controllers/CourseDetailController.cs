@@ -16,7 +16,7 @@ namespace Presentation.Layer.Controllers
         }
 
         [HttpPut("{id:int}")] 
-        public async Task<IActionResult> UpdateDetailAsync([FromRoute(Name = "id")]int id,
+        public async Task<IActionResult> UpdateOneCourseDetailAsync([FromRoute(Name = "id")]int id,
             [FromBody]CourseDetailDto courseDetailDto)
         {
             await _manager
@@ -26,7 +26,7 @@ namespace Presentation.Layer.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetOneCourseDetail([FromRoute(Name = "id")]int id)
+        public async Task<IActionResult> GetOneCourseDetailAsync([FromRoute(Name = "id")]int id)
         {
             var courseDetailDto = await _manager
                 .CourseDetailService
