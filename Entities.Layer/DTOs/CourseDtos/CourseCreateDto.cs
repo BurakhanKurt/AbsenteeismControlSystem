@@ -3,11 +3,8 @@ using Entities.Layer.Models;
 
 namespace Entities.Layer.DTOs.CourseDtos
 {
-    public record CourseCreateDto 
+    public record CourseCreateDto : CourseDto
     {
-        public String CourseName { get; set; }
         public CourseDetail CourseDetail { get; set; }
-
-
     }
 }

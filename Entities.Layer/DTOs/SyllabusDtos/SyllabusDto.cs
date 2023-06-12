@@ -10,6 +10,6 @@ namespace Entities.Layer.DTOs.SyllabusDtos
         public byte Id { get; set; }
         public String DayName { get; set; }
 
-        public ICollection<CourseCalendarDto> CourseCalendars { get; set; }
+        public ICollection<CourseCalendarForSyllabusDto> CourseCalendars { get; set; }
     }
 }
