@@ -53,10 +53,11 @@ namespace Service.Layer.Concretes
         }
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
-        public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges)
+        public async Task<IEnumerable<TodayCoursesDto>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges)
         {
             var courses = await _repositoryManager.Course.GetAllUserCoursesByDayAndTimeAsync(userId, dayId, trackChanges);
-            return courses;
+            var response = _mapper.Map<List<TodayCoursesDto>>(courses);
+            return response;
         }
 
         // Belirli bir kursu asenkron olarak kurs idsine göre getirir

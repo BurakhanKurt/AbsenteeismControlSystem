@@ -18,12 +18,9 @@ namespace AcsApi.AutoMapper
             CreateMap<Course, CourseDto>().ReverseMap();
             CreateMap<CourseCalendar, CourseCalendarDto>();
             CreateMap<Day, SyllabusDto>();
-         
-            
             CreateMap<CourseCreateDto, Course>().ReverseMap();
-            
-          
             CreateMap<CourseCalendar, CourseCalendarForSyllabusDto>();
+            CreateMap<TodayCoursesDto, Course>().ReverseMap();
         }
     }
 }

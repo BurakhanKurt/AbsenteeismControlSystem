@@ -19,7 +19,7 @@ namespace Service.Layer.Abstracts
         Task<IEnumerable<CourseDto>> GetAllCourseByUserAsync(int userId, bool trackChanges);
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
-        Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges);
+        Task<IEnumerable<TodayCoursesDto>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges);
 
         // Detaylarıyla birlikte belirli bir kursu asenkron olarak getirir
         Task<Course> GetOneCourseByIdWithDetailAsync(int courseId, bool trackChanges);

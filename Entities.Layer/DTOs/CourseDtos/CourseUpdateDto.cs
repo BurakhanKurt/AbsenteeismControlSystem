@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Layer.DTOs.CourseDtos
 {
-    public class CourseUpdateDto : BaseDto
+    public record CourseUpdateDto : BaseDto
     {
         public string CourseName { get; set; }
     }

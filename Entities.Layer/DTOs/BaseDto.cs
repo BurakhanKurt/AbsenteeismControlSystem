@@ -2,7 +2,7 @@
 
 namespace Entities.Layer.DTOs
 {
-    public class BaseDto
+    public record BaseDto
     {
         public int Id { get; set; }
 

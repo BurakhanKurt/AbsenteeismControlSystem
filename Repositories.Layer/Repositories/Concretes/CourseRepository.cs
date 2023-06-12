@@ -19,11 +19,13 @@ namespace Repositories.Layer.Repositories.Concretes
         }
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
-        public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges)
+        public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges)
         {
-        var courses = await GetByCondition(c => c.UserId == userId && c.CourseCalendars.Any(c => c.DayId==dayId), trackChanges)
-        .Include(c => c.CourseCalendars.Where(cc => cc.DayId == dayId))
-        .ToListAsync();
+            var courses = await GetByCondition(c => c.UserId == userId && c.CourseCalendars.Any(c => c.DayId == dayId), trackChanges)
+            .Include(c => c.CourseCalendars.Where(cc => cc.DayId == dayId).OrderBy(cc => cc.StartTime))
+            .Include(c => c.CourseDetail)
+
+            .ToListAsync();
             return courses;
         }
 
@@ -50,23 +52,23 @@ namespace Repositories.Layer.Repositories.Concretes
         // Belirli bir kursu asenkron olarak kurs idsine göre getirir
         public async Task<Course> GetOneCourseByIdAsync(int courseId, bool trackChanges)
         {
-            var course = await GetByCondition(c => c.Id == courseId, trackChanges).Include(x=> x.CourseDetail)
+            var course = await GetByCondition(c => c.Id == courseId, trackChanges).Include(x => x.CourseDetail)
                 .SingleOrDefaultAsync();
             return course;
         }
 
         // Bir kursu senkron olarak oluşturur
         public void CreateOneCourse(Course course) => Create(course);
-        
+
         // Bir kursu asenkron olarak oluşturur
         public async Task CreateOneCourseAsync(Course course) => await CreateAsync(course);
-        
+
         // Bir kursu günceller
         public void UpdateOneCourse(Course course) => Update(course);
 
         // Bir kursu siler
         public void DeleteOneCourse(Course course) => Delete(course);
 
-        
+
     }
 }
