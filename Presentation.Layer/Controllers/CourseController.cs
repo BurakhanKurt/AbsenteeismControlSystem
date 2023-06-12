@@ -1,4 +1,5 @@
-﻿using Entities.Layer.DTOs.CourseDtos.Response;
+﻿using Entities.Layer.DTOs.CourseDtos;
+
 using Entities.Layer.Params;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
@@ -16,7 +17,7 @@ namespace Presentation.Layer.Controllers
         }
 
         [HttpPost("create/{user:int}")]
-        public async Task<IActionResult> CreateOneCourseAsync([FromRoute(Name = "user")] int userId, [FromBody] CourseDto courseCreateDto)
+        public async Task<IActionResult> CreateOneCourseAsync([FromRoute(Name = "user")] int userId, [FromBody] CourseCreateDto courseCreateDto)
         {
             var course = await _serviceManager.CourseServices.CreateOneCourseAsync(userId, courseCreateDto);
             return StatusCode(201, course);
@@ -45,12 +46,13 @@ namespace Presentation.Layer.Controllers
         }
 
 
-        [HttpGet(Name = "GetAllUserCoursesByDayAndTimeAsync")]
+        [HttpGet("oneday",Name = "GetAllUserCoursesByDayAndTimeAsync")]
         public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] CourseDayAndUserParams myParams)
         {
             var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(myParams.usId, myParams.daId, false);
             return Ok(courses);
         }
+        
 
 
     }

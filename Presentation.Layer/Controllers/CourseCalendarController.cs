@@ -17,7 +17,7 @@ namespace Presentation.Layer.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetCourseCalendarAsync([FromRoute(Name = "id")] int courseId)
+        public async Task<IActionResult> GetAllCourseCalendarAsync([FromRoute(Name = "id")] int courseId)
         {
             var courseCalendarsDto = await _manager
                 .CourseCalendarService

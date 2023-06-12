@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Entities.Layer.DTOs.CourseDtos;
 
-using Entities.Layer.DTOs.CourseDtos.Response;
+
 using Entities.Layer.Models;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Layer.Repositories.Abstracts;
@@ -22,7 +22,7 @@ namespace Service.Layer.Concretes
         }
 
         // Bir kursu asenkron olarak oluşturur
-        public async Task<CourseDto> CreateOneCourseAsync(int userId, CourseDto courseCreateDto)
+        public async Task<CourseCreateDto> CreateOneCourseAsync(int userId, CourseCreateDto courseCreateDto)
         {
             var course = _mapper.Map<Course>(courseCreateDto);
             course.UserId = userId;
@@ -30,7 +30,7 @@ namespace Service.Layer.Concretes
             course.CourseDetail.CreatedDate = DateTime.Now;
             await _repositoryManager.Course.CreateOneCourseAsync(course);
             await _repositoryManager.SaveAsync();
-            var response = _mapper.Map<CourseDto>(course);
+            var response = _mapper.Map<CourseCreateDto>(course);
             return response;
         }
 
@@ -80,7 +80,7 @@ namespace Service.Layer.Concretes
         }
 
         // Bir kursu asenkron olarak günceller
-        public async Task<Course> UpdateOneCourseAsync(int courseId, Course course, bool trackChanges)
+        public async Task<Course> UpdateOneCourseAsync(int courseId, CourseUpdateDto course, bool trackChanges)
         {
             var entity = await _repositoryManager.Course.GetOneCourseByIdAsync(courseId, trackChanges);
             _repositoryManager.Course.UpdateOneCourse(entity);

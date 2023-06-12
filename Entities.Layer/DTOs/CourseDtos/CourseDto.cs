@@ -1,12 +1,11 @@
 ﻿using Entities.Layer.DTOs.CourseDetailDtos;
 
 
-namespace Entities.Layer.DTOs.CourseDtos.Response
+namespace Entities.Layer.DTOs.CourseDtos
 {
-    public record CourseDto
+    public class CourseDto : BaseDto
     {
-        public int Id { get; set; }
         public string CourseName { get; set; }
-        public CourseDetailDto  CourseDetail { get; set; }
+        
     }
 }

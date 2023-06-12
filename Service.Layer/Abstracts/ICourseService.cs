@@ -1,5 +1,5 @@
 ﻿using Entities.Layer.DTOs.CourseDtos;
-using Entities.Layer.DTOs.CourseDtos.Response;
+
 using Entities.Layer.Models;
 
 namespace Service.Layer.Abstracts
@@ -7,10 +7,10 @@ namespace Service.Layer.Abstracts
     public interface ICourseService
     {
         // Bir kursu asenkron olarak oluşturur
-        Task<CourseDto> CreateOneCourseAsync(int userId, CourseDto courseCreateDto);
+        Task<CourseCreateDto> CreateOneCourseAsync(int userId, CourseCreateDto courseCreateDto);
 
         // Bir kursu asenkron olarak günceller
-        Task<Course> UpdateOneCourseAsync(int courseId, Course course, bool trackChanges);
+        Task<Course> UpdateOneCourseAsync(int courseId, CourseUpdateDto course, bool trackChanges);
 
         // Bir kursu asenkron olarak siler
         Task DeleteOneCourseAsync(int id, bool trackChanges);

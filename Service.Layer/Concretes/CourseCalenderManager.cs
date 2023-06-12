@@ -23,7 +23,7 @@ namespace Service.Layer.Concretes
                 .GetAllCourseCalendarAsync(courseId, trackChanges);
             var courseCalendarDtos = _mapper.Map<List<CourseCalendarDto>>(courseCalendars);
             // Todo Hata yonetimini unutma
-            return courseCalendarDtos;
+            return courseCalendarDtos; 
         }
 
         public async Task<CourseCalendarDto> GetOneCourseCalendarAsync(int courseId, byte dayId, bool trackChanges)

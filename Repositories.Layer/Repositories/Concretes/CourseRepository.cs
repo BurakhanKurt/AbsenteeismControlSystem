@@ -21,11 +21,9 @@ namespace Repositories.Layer.Repositories.Concretes
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
         public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, int dayId, bool trackChanges)
         {
-            var courses = await GetByCondition(u => u.UserId == userId, trackChanges)
-                .Include(c => c.CourseCalendars)
-                    .ThenInclude(d => d.Day)
-                .Where(d => d.CourseCalendars.Any(d => d.DayId == dayId))
-                .ToListAsync();
+        var courses = await GetByCondition(c => c.UserId == userId && c.CourseCalendars.Any(c => c.DayId==dayId), trackChanges)
+        .Include(c => c.CourseCalendars.Where(cc => cc.DayId == dayId))
+        .ToListAsync();
             return courses;
         }
 
