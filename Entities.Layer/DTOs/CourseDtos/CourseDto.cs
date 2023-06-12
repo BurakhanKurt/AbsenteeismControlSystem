@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Entities.Layer.DTOs.CourseDetailDtos;
+
 
 namespace Entities.Layer.DTOs.CourseDtos
 {
-    public record CourseDto
+    public class CourseDto : BaseDto
     {
-        public String CourseName { get; set; }
+        public string CourseName { get; set; }
+        
     }
 }

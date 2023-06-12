@@ -18,6 +18,7 @@ namespace Repositories.Layer.Seeds
                     CreatedDate = DateTime.Now,
                     isActive = true,
                     isDeleted = false,
+                    
                 }, 
                 new Course
                 {

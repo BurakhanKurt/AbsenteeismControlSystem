@@ -1,6 +1,4 @@
-﻿
-using Entities.Layer.DTOs.CourseDetailDtos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Layer.DTOs.CourseDtos
 {
-    public class CourseCreateDto : CourseDto
+    public class BaseCourseDto
     {
-        CourseDetailDto courseDetail { get; set; }
+        public string CourseName { get; set; }
     }
 }

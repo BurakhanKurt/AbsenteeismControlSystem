@@ -14,6 +14,7 @@ namespace Repositories.Layer
         public DbSet<CourseCalendar> CourseCalendars { get; set; }
         public DbSet<CourseDetail> CourseDetails { get; set; }
         public DbSet<Day> Days { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
