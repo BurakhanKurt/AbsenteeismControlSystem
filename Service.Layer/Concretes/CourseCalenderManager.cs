@@ -63,7 +63,16 @@ namespace Service.Layer.Concretes
             await _manager.SaveAsync();
         }
 
+        public async Task<CourseCalendarDto> CreateOneCourseCalendarAsync(int courseId,byte dayId,CourseCalendarDto courseCalendarDto)
+        {
+            var calendar = _mapper.Map<CourseCalendar>(courseCalendarDto);
+            calendar.CourseId = courseId;
+            calendar.DayId = dayId;
+            calendar.CreatedDate = DateTime.Now;
+            await _manager.CourseCalendar.CreateOneCourseCalendarAsync(calendar);
+            await _manager.SaveAsync();
 
-
+            return courseCalendarDto;
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Entities.Layer.Params;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
+using System.Globalization;
 
 namespace Presentation.Layer.Controllers
 {
@@ -33,6 +34,21 @@ namespace Presentation.Layer.Controllers
                .CourseCalendarService
                .GetOneCourseCalendarAsync(calendarParams.cId, calendarParams.dId, false);
             return Ok(calendar);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateOneCourseCalendarAsync(
+            [FromQuery] CourseCalendarParams calendarParams,
+            [FromBody] CourseCalendarDto courseCalendarDto)
+        {
+            var calendar = await _manager
+                .CourseCalendarService
+                .CreateOneCourseCalendarAsync(
+                    calendarParams.cId,
+                    calendarParams.dId,
+                    courseCalendarDto
+                 );
+            return StatusCode(201,calendar);
         }
 
         [HttpPut]

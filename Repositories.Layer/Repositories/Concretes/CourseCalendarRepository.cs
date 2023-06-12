@@ -28,5 +28,8 @@ namespace Repositories.Layer.Repositories.Concretes
 
 
         public void UpdateOneCourseCalendar(CourseCalendar courseCalendar) => Update(courseCalendar);
+
+        public async Task CreateOneCourseCalendarAsync(CourseCalendar courseCalendar) => 
+            await CreateAsync(courseCalendar);
     }
 }

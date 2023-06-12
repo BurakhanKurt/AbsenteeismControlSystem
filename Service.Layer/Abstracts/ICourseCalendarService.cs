@@ -7,6 +7,7 @@ namespace Service.Layer.Abstracts
     {
         Task<IEnumerable<CourseCalendarDto>> GetAllCourseCalendarAsync(int courseId,bool trackChanges);
         Task<CourseCalendarDto> GetOneCourseCalendarAsync(int courseId,byte dayId,bool trackChanges);
+        Task<CourseCalendarDto> CreateOneCourseCalendarAsync(int courseId, byte dayId,CourseCalendarDto courseCalendarDto);
         Task UpdateOneCourseCalendarAsync(int courseId,byte dayId,CourseCalendarDto courseCalendarDto,bool trackChanges);
         Task DeleteOneCourseCalendarAsync(int courseId, byte dayId,bool trackChanges);
     }
