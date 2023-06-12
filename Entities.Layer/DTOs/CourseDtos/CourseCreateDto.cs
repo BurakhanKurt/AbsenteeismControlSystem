@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Layer.DTOs.CourseDtos
 {
-    public class CourseCreateDto : CourseDto
+    public record CourseCreateDto : CourseDto
     {
-        CourseDetailDto courseDetail { get; set; }
+        public CourseDetailDto courseDetail { get; set; }
     }
 }

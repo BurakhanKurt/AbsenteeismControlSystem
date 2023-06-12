@@ -13,8 +13,8 @@ namespace Repositories.Layer.Seeds
                 {
                     CourseId = 1,
                     DayId = 1,
-                    StartTime = DateTime.Now,
-                    EndTime = DateTime.Now,
+                    StartTime = new TimeSpan(8,0,0),
+                    EndTime = new TimeSpan(12, 0, 0),
                     CreatedDate = DateTime.Now,
                     isActive = true,
                     isDeleted = false
@@ -23,18 +23,18 @@ namespace Repositories.Layer.Seeds
                 {
                     CourseId = 2,
                     DayId = 2,
-                    StartTime = DateTime.Now,
-                    EndTime = DateTime.Now,
+                    StartTime = new TimeSpan(9, 0, 0),
+                    EndTime = new TimeSpan(11, 0, 0),
                     CreatedDate = DateTime.Now,
                     isActive = true,
                     isDeleted = false
-                }, 
+                },
                 new CourseCalendar
                 {
                     CourseId = 2,
                     DayId = 3,
-                    StartTime = DateTime.Now,
-                    EndTime = DateTime.Now,
+                    StartTime = new TimeSpan(10, 0, 0),
+                    EndTime = new TimeSpan(12, 0, 0),
                     CreatedDate = DateTime.Now,
                     isActive = true,
                     isDeleted = false

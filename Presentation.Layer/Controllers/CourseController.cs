@@ -46,7 +46,7 @@ namespace Presentation.Layer.Controllers
         }
 
 
-        [HttpGet("oneday",Name = "GetAllUserCoursesByDayAndTimeAsync")]
+        [HttpGet("today",Name = "GetAllUserCoursesByDayAndTimeAsync")]
         public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] CourseDayAndUserParams myParams)
         {
             var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(myParams.usId, myParams.daId, false);
