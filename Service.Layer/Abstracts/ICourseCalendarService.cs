@@ -1,10 +1,13 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Layer.DTOs.CourseCalendarDtos;
+using Entities.Layer.Models;
 
 namespace Service.Layer.Abstracts
 {
     public interface ICourseCalendarService
     {
-        Task UpdateOneCourseCalendarAsync(int courseId,int dayId,CourseCalendar courseCalendar,bool trackChanges);
-        Task DeleteOneCourseCalendar(int courseId, int dayId,bool trackChanges);
+        Task<IEnumerable<CourseCalendarDto>> GetAllCourseCalendarAsync(int courseId,bool trackChanges);
+        Task<CourseCalendarDto> GetOneCourseCalendarAsync(int courseId,byte dayId,bool trackChanges);
+        Task UpdateOneCourseCalendarAsync(int courseId,byte dayId,CourseCalendarDto courseCalendarDto,bool trackChanges);
+        Task DeleteOneCourseCalendarAsync(int courseId, byte dayId,bool trackChanges);
     }
 }

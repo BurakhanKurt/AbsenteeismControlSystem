@@ -6,7 +6,7 @@ using Service.Layer.Abstracts;
 namespace Presentation.Layer.Controllers
 {
     [ApiController]
-    [Route("api/coursedetails")]
+    [Route("api/[controller]s")]
     public class CourseDetailController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -23,6 +23,15 @@ namespace Presentation.Layer.Controllers
                 .CourseDetailService
                 .UpdateOneCourseDetailAsync(id, courseDetailDto, false);
             return NoContent();
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetOneCourseDetail([FromRoute(Name = "id")]int id)
+        {
+            var courseDetailDto = await _manager
+                .CourseDetailService
+                .GetOneCourseDetailAsync(id, false);
+            return Ok(courseDetailDto);
         }
     }
 }

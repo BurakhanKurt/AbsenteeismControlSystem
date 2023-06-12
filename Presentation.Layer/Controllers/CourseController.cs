@@ -1,4 +1,5 @@
 ﻿using Entities.Layer.DTOs.CourseDtos.Response;
+using Entities.Layer.Params;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
@@ -15,17 +16,17 @@ namespace Presentation.Layer.Controllers
         }
 
         [HttpPost("create/{user:int}")]
-        public async Task<IActionResult> CreateOneCourseAsync ([FromRoute(Name = "user")] int userId ,[FromBody] CourseDto courseCreateDto)
+        public async Task<IActionResult> CreateOneCourseAsync([FromRoute(Name = "user")] int userId, [FromBody] CourseDto courseCreateDto)
         {
             var course = await _serviceManager.CourseServices.CreateOneCourseAsync(userId, courseCreateDto);
-            return StatusCode(201,course);
+            return StatusCode(201, course);
         }
 
         [HttpGet("one/{id:int}")]
         public async Task<IActionResult> GetOneCourse([FromRoute(Name = "id")] int courseId)
         {
             var course = await _serviceManager.CourseServices.GetOneCourseByIdAsync(courseId, false);
-            return StatusCode(200,course);
+            return StatusCode(200, course);
         }
 
         [HttpDelete("{id:int}")]
@@ -33,7 +34,7 @@ namespace Presentation.Layer.Controllers
         {
             await _serviceManager.CourseServices.DeleteOneCourseAsync(courseId, false);
 
-            return NoContent(); 
+            return NoContent();
         }
 
         [HttpGet("byuser/{user:int}")]
@@ -44,10 +45,10 @@ namespace Presentation.Layer.Controllers
         }
 
 
-        [HttpGet("usertoday")]
-        public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] byte dayId)
+        [HttpGet(Name = "GetAllUserCoursesByDayAndTimeAsync")]
+        public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] CourseDayAndUserParams myParams)
         {
-            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(1,dayId, false);
+            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(myParams.usId, myParams.daId, false);
             return Ok(courses);
         }
 

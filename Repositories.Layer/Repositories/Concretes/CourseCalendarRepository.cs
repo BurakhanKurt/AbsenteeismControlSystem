@@ -9,15 +9,23 @@ namespace Repositories.Layer.Repositories.Concretes
         public CourseCalendarRepository(AppDbContext context) : base(context)
         {
         }
-        public void DeleteOneCourseCalendar(CourseCalendar courseCalendar) => Delete(courseCalendar);
+        public async Task<IEnumerable<CourseCalendar>> GetAllCourseCalendarAsync(int courseId, bool trackChanges)
+        {
+            var courseCalendars = await 
+                GetByCondition(c => c.CourseId == courseId,trackChanges)
+                .ToListAsync();
+            return courseCalendars;
+        }
 
-        public async Task<CourseCalendar> GetOneCourseCalendarByIdAsync(int courseId, int dayId, bool trackChanges)
+        public async Task<CourseCalendar> GetOneCourseCalendarByIdAsync(int courseId, byte dayId, bool trackChanges)
         {
             var courseCalendar = await 
                 GetByCondition(x => x.CourseId == courseId && x.DayId == dayId,trackChanges)
                 .SingleOrDefaultAsync();
             return courseCalendar;
         }
+        public void DeleteOneCourseCalendar(CourseCalendar courseCalendar) => Delete(courseCalendar);
+
 
         public void UpdateOneCourseCalendar(CourseCalendar courseCalendar) => Update(courseCalendar);
     }

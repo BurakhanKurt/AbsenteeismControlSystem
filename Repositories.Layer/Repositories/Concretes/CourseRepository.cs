@@ -23,7 +23,7 @@ namespace Repositories.Layer.Repositories.Concretes
         {
             var courses = await GetByCondition(u => u.UserId == userId, trackChanges)
                 .Include(c => c.CourseCalendars)
-                    .ThenInclude(d => d.Day.DayName)
+                    .ThenInclude(d => d.Day)
                 .Where(d => d.CourseCalendars.Any(d => d.DayId == dayId))
                 .ToListAsync();
             return courses;
