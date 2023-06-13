@@ -14,7 +14,7 @@ namespace Repositories.Layer.Repositories.Concretes
             var days = await GetAll(trackChanges)
                 .Where(d => d.CourseCalendars.Any(a => a.Course.UserId == userId))
                 .OrderBy(d => d.Id)
-                .Include(c => c.CourseCalendars)
+                .Include(c => c.CourseCalendars.OrderBy(c => c.StartTime))
                     .ThenInclude(a => a.Course)
                 .ToListAsync();
             return days;

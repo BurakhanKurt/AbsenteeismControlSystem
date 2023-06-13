@@ -12,8 +12,9 @@ namespace Repositories.Layer.Repositories.Concretes
         public async Task<IEnumerable<CourseCalendar>> GetAllCourseCalendarAsync(int courseId, bool trackChanges)
         {
             var courseCalendars = await 
-                GetByCondition(c => c.CourseId == courseId,trackChanges)
-                .ToListAsync();
+                GetByCondition(c => c.CourseId == courseId,trackChanges).
+                OrderBy(c => c.StartTime).
+                ToListAsync();
             return courseCalendars;
         }
 
