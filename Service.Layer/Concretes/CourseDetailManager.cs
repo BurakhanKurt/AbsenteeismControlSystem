@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Entities.Layer.DTOs;
 using Entities.Layer.DTOs.CourseDetailDtos;
+using Entities.Layer.Models;
 using Repositories.Layer.Repositories.Abstracts;
 using Service.Layer.Abstracts;
 
@@ -36,6 +38,14 @@ namespace Service.Layer.Concretes
 
             _manager.CourseDetail.UpdateOneCourseDetail(entity);
             await _manager.SaveAsync();
+        }
+
+        public async Task<IEnumerable<ExamScheduleDto>> GetExamScheduleByUser(int userId, bool trackChanges)
+        {
+            var details = await _manager.CourseDetail.GetExamScheduleByUserAsync(userId,trackChanges);
+            var response = _mapper.Map<List<ExamScheduleDto>>(details);
+            
+            return response;
         }
     }
 }

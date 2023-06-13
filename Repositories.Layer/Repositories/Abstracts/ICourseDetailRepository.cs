@@ -6,5 +6,6 @@ namespace Repositories.Layer.Repositories.Abstracts
     {
         void UpdateOneCourseDetail(CourseDetail courseDetail);
         Task<CourseDetail> GetOneCourseDetailByIdAsync(int courseDetailId, bool trackChanges);
+        Task<IEnumerable<CourseDetail>> GetExamScheduleByUserAsync(int userId, bool trackChanges);
     }
 }

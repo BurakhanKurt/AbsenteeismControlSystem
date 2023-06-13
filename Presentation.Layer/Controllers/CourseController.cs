@@ -52,8 +52,13 @@ namespace Presentation.Layer.Controllers
             var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(myParams.usId, myParams.daId, false);
             return Ok(courses);
         }
-        
 
+        [HttpPut]
+        public async Task<IActionResult> UpdateCourse([FromBody] CourseUpdateDto course)
+        {
+            await _serviceManager.CourseServices.UpdateOneCourseAsync(course,false);
+            return NoContent();
+        }
 
     }
 }

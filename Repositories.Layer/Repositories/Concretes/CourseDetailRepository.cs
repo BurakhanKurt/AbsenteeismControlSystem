@@ -1,4 +1,5 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Layer.DTOs;
+using Entities.Layer.Models;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Layer.Repositories.Abstracts;
 
@@ -16,6 +17,15 @@ namespace Repositories.Layer.Repositories.Concretes
                 GetByCondition(c => c.CourseId == courseId,trackChanges)
                 .SingleOrDefaultAsync();
             return courseDetail;
+        }
+
+        public async Task<IEnumerable<CourseDetail>> GetExamScheduleByUserAsync (int userId,bool trackChanges)
+        {
+            var userCourses = await GetByCondition(cd=>cd.Course.UserId == userId && cd.ExamTime != null, trackChanges)
+                .OrderBy(cd=> cd.ExamTime)
+                .Include(cd => cd.Course)
+                .ToListAsync();
+            return userCourses;
         }
 
         public void UpdateOneCourseDetail(CourseDetail courseDetail) => Update(courseDetail);
