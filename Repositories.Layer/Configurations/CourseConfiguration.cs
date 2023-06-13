@@ -10,7 +10,7 @@ namespace Repositories.Layer.Configurations
         {
             builder.HasKey(x => x.Id);
             
-            builder.Property(x => x.CourseName).IsRequired().HasMaxLength(20);
+            builder.Property(x => x.CourseName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.CreatedDate).IsRequired();
        
             builder.HasOne(x => x.User)

@@ -1,7 +1,5 @@
 ﻿
 
-using System.Text.Json.Serialization;
-
 namespace Entities.Layer.DTOs.CourseCalendarDtos
 {
     public record CourseCalendarDto

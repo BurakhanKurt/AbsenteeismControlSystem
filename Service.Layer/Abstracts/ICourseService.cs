@@ -10,7 +10,7 @@ namespace Service.Layer.Abstracts
         Task<CourseCreateDto> CreateOneCourseAsync(int userId, CourseCreateDto courseCreateDto);
 
         // Bir kursu asenkron olarak günceller
-        Task<Course> UpdateOneCourseAsync(int courseId, CourseUpdateDto course, bool trackChanges);
+        Task UpdateOneCourseAsync(CourseUpdateDto course, bool trackChanges);
 
         // Bir kursu asenkron olarak siler
         Task DeleteOneCourseAsync(int id, bool trackChanges);

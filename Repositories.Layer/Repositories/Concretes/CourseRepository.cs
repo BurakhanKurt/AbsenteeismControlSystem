@@ -22,11 +22,11 @@ namespace Repositories.Layer.Repositories.Concretes
         public async Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges)
         {
             var courses = await GetByCondition(c => c.UserId == userId && c.CourseCalendars.Any(c => c.DayId == dayId), trackChanges)
-            .Include(c => c.CourseCalendars.Where(cc => cc.DayId == dayId).OrderBy(cc => cc.StartTime))
+            .Include(c => c.CourseCalendars.Where(cc => cc.DayId == dayId))
             .Include(c => c.CourseDetail)
-
             .ToListAsync();
-            return courses;
+            var sortedCourses = courses.OrderBy(c => c.CourseCalendars.Min(cc => cc.StartTime)).ToList();
+            return sortedCourses;
         }
 
         // Detaylarıyla birlikte belirli bir kursu asenkron olarak getirir

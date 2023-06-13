@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using Entities.Layer.DTOs.CourseDtos;
-
-
 using Entities.Layer.Models;
-using Microsoft.EntityFrameworkCore;
 using Repositories.Layer.Repositories.Abstracts;
 using Service.Layer.Abstracts;
 
@@ -13,7 +10,6 @@ namespace Service.Layer.Concretes
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
-
  
         public CourseManager(IRepositoryManager repositoryManager, IMapper _mapper)
         {
@@ -33,8 +29,6 @@ namespace Service.Layer.Concretes
             var response = _mapper.Map<CourseCreateDto>(course);
             return response;
         }
-
-        
 
         // Bir kursu asenkron olarak siler
         public async Task DeleteOneCourseAsync(int courseId, bool trackChanges)
@@ -81,12 +75,14 @@ namespace Service.Layer.Concretes
         }
 
         // Bir kursu asenkron olarak günceller
-        public async Task<Course> UpdateOneCourseAsync(int courseId, CourseUpdateDto course, bool trackChanges)
+        public async Task UpdateOneCourseAsync(CourseUpdateDto course,bool trackChanges)
         {
-            var entity = await _repositoryManager.Course.GetOneCourseByIdAsync(courseId, trackChanges);
+            int id = course.Id;
+            var entity = await _repositoryManager.Course.GetOneCourseByIdAsync(id,trackChanges); 
+            entity = _mapper.Map(course,entity);
+            entity.UpdateDate= DateTime.Now;
             _repositoryManager.Course.UpdateOneCourse(entity);
             await _repositoryManager.SaveAsync();
-            return entity;
         }
     }
 }
