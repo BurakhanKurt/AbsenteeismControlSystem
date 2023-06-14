@@ -2,7 +2,6 @@
 using Entities.Layer.Params;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
-using System.Globalization;
 
 namespace Presentation.Layer.Controllers
 {
@@ -48,6 +47,7 @@ namespace Presentation.Layer.Controllers
                     calendarParams.dId,
                     courseCalendarDto
                  );
+
             return StatusCode(201,calendar);
         }
 
@@ -64,6 +64,7 @@ namespace Presentation.Layer.Controllers
                     courseCalendarDto,
                     false
                  );
+
             return NoContent();
         }
 

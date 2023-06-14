@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Service.Layer.Abstracts
 {
     public interface IServiceManager
@@ -12,6 +7,7 @@ namespace Service.Layer.Abstracts
         ICourseDetailService CourseDetailService { get; }
         ICourseCalendarService CourseCalendarService { get; }
         ISyllabusService SyllebusService { get; }
+        IAuthenticationService AuthenticationService { get; }
 
     }
 }

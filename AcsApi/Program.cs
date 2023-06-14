@@ -21,7 +21,10 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.RegisterRepositories();
 builder.Services.ConfigureServices();
 builder.Services.AddAutoMapper(typeof(MapProfile));
-
+builder.Services.ConfigureJWT(builder.Configuration);
+// Configure Identity
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureAuthenticationService();
 
 var app = builder.Build();
 
@@ -34,6 +37,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

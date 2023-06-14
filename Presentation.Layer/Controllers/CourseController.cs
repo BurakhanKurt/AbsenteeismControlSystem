@@ -1,6 +1,7 @@
 ﻿using Entities.Layer.DTOs.CourseDtos;
 
 using Entities.Layer.Params;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
@@ -15,7 +16,7 @@ namespace Presentation.Layer.Controllers
         {
             _serviceManager = serviceManager;
         }
-
+        
         [HttpPost("create/{user:int}")]
         public async Task<IActionResult> CreateOneCourseAsync([FromRoute(Name = "user")] int userId, [FromBody] CourseCreateDto courseCreateDto)
         {
@@ -44,7 +45,6 @@ namespace Presentation.Layer.Controllers
             var courses = await _serviceManager.CourseServices.GetAllCourseByUserAsync(userId, false);
             return Ok(courses);
         }
-
 
         [HttpGet("today",Name = "GetAllUserCoursesByDayAndTimeAsync")]
         public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] CourseDayAndUserParams myParams)

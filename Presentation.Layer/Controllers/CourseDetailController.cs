@@ -1,5 +1,5 @@
 ﻿using Entities.Layer.DTOs.CourseDetailDtos;
-using Entities.Layer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
@@ -25,6 +25,7 @@ namespace Presentation.Layer.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneCourseDetailAsync([FromRoute(Name = "id")]int id)
         {

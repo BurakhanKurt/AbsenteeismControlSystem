@@ -7,6 +7,7 @@ using Entities.Layer.DTOs.SyllabusDtos;
 using Entities.Layer.Models;
 using Entities.Layer.DTOs.CourseDtos;
 using Entities.Layer.DTOs;
+using Entities.Layer.DTOs.UserDtos;
 
 namespace AcsApi.AutoMapper
 {
@@ -14,13 +15,12 @@ namespace AcsApi.AutoMapper
     {
         public MapProfile()
         {
-            //------DEtail-----//
+            //------DETAIL-----//
             CreateMap<CourseDetailDto, CourseDetail>().ReverseMap();
             CreateMap<CourseDetail,ExamScheduleDto>().ReverseMap();
 
             //------CALENDAR-----//
             CreateMap<CourseCalendar, CourseCalendarDto>().ReverseMap();
-            CreateMap<CourseCalendar, CourseCalendarDto>();
             CreateMap<CourseCalendar, CourseCalendarForSyllabusDto>();
 
             //------DAY-----//
@@ -31,6 +31,9 @@ namespace AcsApi.AutoMapper
             CreateMap<Course, TodayCoursesDto>().ReverseMap();
             CreateMap<Course, CourseUpdateDto>().ReverseMap();
             CreateMap<Course, CourseDto>().ReverseMap();
+
+            //------USER------//
+            CreateMap<UserForRegistrationDto, User>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Service.Layer.Abstracts;
 
 namespace Presentation.Layer.Controllers
@@ -13,7 +14,7 @@ namespace Presentation.Layer.Controllers
         {
             _manager=manager;
         }
-
+        
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSyllabusAsync([FromRoute(Name = "id")] int id)
         {

@@ -8,16 +8,18 @@ namespace Service.Layer.Concretes
         private readonly ICourseDetailService courseDetailService;
         private readonly ICourseCalendarService courseCalendarService;
         private readonly ISyllabusService syllebusService;
-
+        private readonly IAuthenticationService authenticationService;
         public ServiceManager(ICourseService courseService,
             ICourseDetailService courseDetailService,
             ICourseCalendarService courseCalendarService,
-            ISyllabusService syllebusService)
+            ISyllabusService syllebusService,
+            IAuthenticationService authenticationService)
         {
             this.courseService=courseService;
             this.courseDetailService=courseDetailService;
             this.courseCalendarService=courseCalendarService;
             this.syllebusService=syllebusService;
+            this.authenticationService=authenticationService;
         }
 
         public ICourseService CourseServices => courseService;
@@ -27,5 +29,7 @@ namespace Service.Layer.Concretes
         public ICourseCalendarService CourseCalendarService => courseCalendarService;
 
         public ISyllabusService SyllebusService => syllebusService;
+
+        public IAuthenticationService AuthenticationService => authenticationService;
     }
 }
