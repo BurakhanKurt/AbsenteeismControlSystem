@@ -4,9 +4,9 @@ namespace Entities.DTOs.CourseCalendarDtos
 {
     public record CourseCalendarDto
     {
-        public int CourseId { get; set; }
-        public byte DayId { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set ; }
+        public int CourseId { get; init; }
+        public byte DayId { get; init; }
+        public TimeSpan StartTime { get; init; }
+        public TimeSpan EndTime { get; init ; }
     }
 }

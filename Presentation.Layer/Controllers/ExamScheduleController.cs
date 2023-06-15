@@ -15,13 +15,12 @@ namespace Presentation.Controllers
             _serviceManager = serviceManager;
         }
 
-        
         [HttpGet]
         public async Task<IActionResult> GetExamScheduleByUser()
         {
             var userId = _serviceManager.userId(HttpContext.User);
             var details = await _serviceManager
-                .CourseDetailService
+                .CourseDetailService 
                 .GetExamScheduleByUser(userId, false);
 
             return Ok(details);

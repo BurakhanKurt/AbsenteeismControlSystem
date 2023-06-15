@@ -6,8 +6,8 @@ namespace Entities.DTOs.CourseDtos
 {
     public record TodayCoursesDto : CourseDto
     {
-        public CourseDetailDto CourseDetail { get; set; } 
-        public List<CourseCalendarDto> CourseCalendars { get; set; }
+        public CourseDetailDto CourseDetail { get; init; } 
+        public List<CourseCalendarDto> CourseCalendars { get; init; }
 
     }
 }

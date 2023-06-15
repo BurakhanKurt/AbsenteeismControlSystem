@@ -4,6 +4,6 @@ namespace Entities.DTOs.CourseCalendarDtos
 {
     public record CourseCalendarForSyllabusDto : CourseCalendarDto
     {
-        public CourseDto Course { get; set; }
+        public CourseDto Course { get; init; }
     }
 }

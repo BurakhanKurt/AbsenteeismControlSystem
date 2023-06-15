@@ -3,9 +3,9 @@ namespace Entities.DTOs.CourseDetailDtos
 {
     public record CourseDetailDto
     {
-        public byte AbsenceLimit { get; set; }
-        public byte CurrentAbsence { get; set; }
-        public String? Description { get; set; }
-        public DateTime? ExamTime { get; set; } 
+        public byte AbsenceLimit { get; init; }
+        public byte CurrentAbsence { get; init; }
+        public String? Description { get; init; }
+        public DateTime? ExamTime { get; init; } 
     }
 }
