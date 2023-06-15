@@ -5,13 +5,13 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AcsApi", "AcsApi\AcsApi.csproj", "{9C40E323-EFC8-436C-B81D-23DA3DD9CD8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities.Layer", "Entities.Layer\Entities.Layer.csproj", "{909D5700-5120-4C49-98C9-3BF3AE38967C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities.Layer\Entities.csproj", "{909D5700-5120-4C49-98C9-3BF3AE38967C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories.Layer", "Repositories.Layer\Repositories.Layer.csproj", "{E05B88DA-7F54-47AB-9EA5-F689B6440762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories.Layer\Repositories.csproj", "{E05B88DA-7F54-47AB-9EA5-F689B6440762}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Layer", "Service.Layer\Service.Layer.csproj", "{7149AB0E-5134-479F-8783-FF083DA7F8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service.Layer\Service.csproj", "{7149AB0E-5134-479F-8783-FF083DA7F8E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.Layer", "Presentation.Layer\Presentation.Layer.csproj", "{AA6E2799-71DB-4CE5-A181-6E53F1099ECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation.Layer\Presentation.csproj", "{AA6E2799-71DB-4CE5-A181-6E53F1099ECC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

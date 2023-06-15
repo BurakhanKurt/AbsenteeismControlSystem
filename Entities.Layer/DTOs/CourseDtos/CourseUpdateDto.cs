@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace Entities.Layer.DTOs.CourseDtos
+namespace Entities.DTOs.CourseDtos
 {
     public record CourseUpdateDto : BaseDto
     {

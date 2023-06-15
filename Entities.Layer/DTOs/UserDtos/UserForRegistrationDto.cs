@@ -1,7 +1,6 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Entities.Layer.DTOs.UserDtos
+namespace Entities.DTOs.UserDtos
 {
     public record UserForRegistrationDto
     {

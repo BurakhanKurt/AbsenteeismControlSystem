@@ -1,7 +1,7 @@
 ﻿
 using System.Linq.Expressions;
 
-namespace Repositories.Layer.Repositories.Abstracts
+namespace Repositories.Repositories.Abstracts
 {
     public interface IRepositoryBase<T> where T : class
     {

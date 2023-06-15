@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
-using Entities.Layer.DTOs.CourseCalendarDtos;
-using Entities.Layer.DTOs.CourseDetailDtos;
-using Entities.Layer.DTOs.CourseDtos;
-using Entities.Layer.DTOs.SyllabusDtos;
+using Entities.DTOs.CourseCalendarDtos;
+using Entities.DTOs.CourseDetailDtos;
+using Entities.DTOs.CourseDtos;
+using Entities.DTOs.SyllabusDtos;
 
-using Entities.Layer.Models;
-using Entities.Layer.DTOs.CourseDtos;
-using Entities.Layer.DTOs;
-using Entities.Layer.DTOs.UserDtos;
+using Entities.Models;
+using Entities.DTOs;
+using Entities.DTOs.UserDtos;
 
 namespace AcsApi.AutoMapper
 {

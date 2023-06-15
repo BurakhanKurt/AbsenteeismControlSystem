@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace Entities.Layer.Models
+namespace Entities.Models
 {
     public class Day
     {

@@ -1,7 +1,8 @@
-﻿using Repositories.Layer.Repositories.Abstracts;
-using Repositories.Layer.UnıtOfWorks.Abstract;
+﻿
+using Repositories.Repositories.Abstracts;
+using Repositories.UnıtOfWorks.Abstract;
 
-namespace Repositories.Layer.Repositories.Concretes
+namespace Repositories.Repositories.Concretes
 {
     public class RepositoryManager : IRepositoryManager
     {

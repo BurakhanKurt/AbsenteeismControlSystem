@@ -1,6 +1,8 @@
-﻿using Entities.Layer.Models;
+﻿
 
-namespace Repositories.Layer.Repositories.Abstracts
+using Entities.Models;
+
+namespace Repositories.Repositories.Abstracts
 {
     public interface ISyllabusRepository : IRepositoryBase<Day>
     {

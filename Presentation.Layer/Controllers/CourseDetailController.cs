@@ -1,9 +1,10 @@
-﻿using Entities.Layer.DTOs.CourseDetailDtos;
+﻿
+using Entities.DTOs.CourseDetailDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Presentation.Layer.Controllers
+namespace Presentation.Controllers
 {
     [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]

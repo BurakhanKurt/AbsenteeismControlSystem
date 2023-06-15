@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using Entities.Layer.DTOs.UserDtos;
-using Entities.Layer.Models;
+using Entities.DTOs.UserDtos;
+using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Service.Layer.Concretes
+namespace Service.Concretes
 {
     public class AuthenticationManager : IAuthenticationService
     {

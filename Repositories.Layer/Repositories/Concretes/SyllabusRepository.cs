@@ -1,8 +1,8 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
-using Repositories.Layer.Repositories.Abstracts;
+using Repositories.Repositories.Abstracts;
 
-namespace Repositories.Layer.Repositories.Concretes
+namespace Repositories.Repositories.Concretes
 {
     public class SyllabusRepository : RepositoryBase<Day>, ISyllabusRepository 
     {

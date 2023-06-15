@@ -1,9 +1,9 @@
-﻿using Entities.Layer.DTOs.CourseDtos;
+﻿using Entities.DTOs.CourseDtos;
 
-using Entities.Layer.Models;
+using Entities.Models;
 
-namespace Service.Layer.Abstracts
-{
+namespace Service.Abstracts
+{   
     public interface ICourseService
     {
         // Bir kursu asenkron olarak oluşturur

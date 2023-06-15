@@ -1,7 +1,5 @@
-﻿using Entities.Layer.DTOs.CourseDetailDtos;
-
-
-namespace Entities.Layer.DTOs.CourseDtos
+﻿
+namespace Entities.DTOs.CourseDtos
 {
     public record CourseDto : BaseDto
     {

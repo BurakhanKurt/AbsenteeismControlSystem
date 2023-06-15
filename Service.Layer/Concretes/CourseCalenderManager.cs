@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Entities.Layer.DTOs.CourseCalendarDtos;
-using Entities.Layer.Models;
-using Repositories.Layer.Repositories.Abstracts;
-using Service.Layer.Abstracts;
+using Entities.DTOs.CourseCalendarDtos;
+using Entities.Models;
+using Repositories.Repositories.Abstracts;
+using Service.Abstracts;
 
-namespace Service.Layer.Concretes
+namespace Service.Concretes
 {
     public class CourseCalenderManager : ICourseCalendarService
     {

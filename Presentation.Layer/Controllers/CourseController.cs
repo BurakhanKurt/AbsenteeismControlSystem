@@ -1,11 +1,10 @@
-﻿using Entities.Layer.DTOs.CourseDtos;
-
-using Entities.Layer.Params;
-using Microsoft.AspNetCore.Authorization;
+﻿
+using Entities.DTOs.CourseDtos;
+using Entities.Params;
 using Microsoft.AspNetCore.Mvc;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Presentation.Layer.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]s")]
@@ -59,6 +58,5 @@ namespace Presentation.Layer.Controllers
             await _serviceManager.CourseServices.UpdateOneCourseAsync(course,false);
             return NoContent();
         }
-
     }
 }

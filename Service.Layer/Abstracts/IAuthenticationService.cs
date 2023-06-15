@@ -1,8 +1,8 @@
 ﻿
-using Entities.Layer.DTOs.UserDtos;
+using Entities.DTOs.UserDtos;
 using Microsoft.AspNetCore.Identity;
 
-namespace Service.Layer.Abstracts
+namespace Service.Abstracts
 {
     public interface IAuthenticationService
     {

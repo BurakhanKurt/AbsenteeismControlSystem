@@ -1,5 +1,5 @@
 ﻿
-namespace Entities.Layer
+namespace Entities  
 {
     public class BaseDto
     {

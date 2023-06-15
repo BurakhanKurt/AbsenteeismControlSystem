@@ -1,15 +1,15 @@
-﻿using Entities.Layer.DTOs.UserDtos;
+﻿
+using Entities.DTOs.UserDtos;
 using Microsoft.AspNetCore.Mvc;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Presentation.Layer.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/authentication")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IServiceManager _manager;
-
         public AuthenticationController(IServiceManager manager)
         {
             _manager=manager;

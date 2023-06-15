@@ -1,4 +1,4 @@
-﻿namespace Entities.Layer.Params
+﻿namespace Entities.Params
 {
     public class CourseCalendarParams
     {

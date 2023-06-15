@@ -1,6 +1,7 @@
-﻿using Entities.Layer.Models;
+﻿
+using Entities.Models;
 
-namespace Repositories.Layer.Repositories.Abstracts
+namespace Repositories.Repositories.Abstracts
 {
     public interface ICourseRepository : IRepositoryBase<Course>
     {

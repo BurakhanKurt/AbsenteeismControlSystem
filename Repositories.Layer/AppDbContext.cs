@@ -1,10 +1,10 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace Repositories.Layer
+namespace Repositories
 {
     public class AppDbContext : IdentityDbContext<User, IdentityRole<int>,int>   {
         public AppDbContext(DbContextOptions options) : base(options)

@@ -1,6 +1,6 @@
-﻿using Repositories.Layer.UnıtOfWorks.Abstract;
+﻿using Repositories.UnıtOfWorks.Abstract;
 
-namespace Repositories.Layer.UnıtOfWorks.Concrate
+namespace Repositories.UnıtOfWorks.Concrate
 {
     public class UnitOfWork : IUnitOfWork
     {

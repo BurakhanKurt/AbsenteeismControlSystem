@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Repositories.Layer.Repositories.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Repositories.Repositories.Abstracts;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Repositories.Layer.Repositories.Concretes
+namespace Repositories.Repositories.Concretes
 {
     public class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {

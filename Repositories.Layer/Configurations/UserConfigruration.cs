@@ -1,8 +1,9 @@
-﻿using Entities.Layer.Models;
+﻿
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using Entities.Models;
 
-namespace Repositories.Layer.Configurations
+namespace Repositories.Configurations
 {
     public class UserConfigruration : IEntityTypeConfiguration<User>
     {

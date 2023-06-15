@@ -1,9 +1,10 @@
-﻿using Entities.Layer.DTOs.CourseCalendarDtos;
-using Entities.Layer.Params;
+﻿
+using Entities.DTOs.CourseCalendarDtos;
+using Entities.Params;
 using Microsoft.AspNetCore.Mvc;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Presentation.Layer.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]s")]
@@ -82,6 +83,5 @@ namespace Presentation.Layer.Controllers
 
             return NoContent();
         }
-
     }
 }

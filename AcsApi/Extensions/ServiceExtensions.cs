@@ -1,17 +1,16 @@
-﻿using Entities.Layer.Models;
+﻿
+using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Repositories.Layer;
-using Repositories.Layer.Repositories.Abstracts;
-using Repositories.Layer.Repositories.Concretes;
-using Repositories.Layer.UnıtOfWorks.Abstract;
-using Repositories.Layer.UnıtOfWorks.Concrate;
-using Service.Layer.Abstracts;
-using Service.Layer.Concretes;
+using Repositories;
+using Repositories.Repositories.Abstracts;
+using Repositories.Repositories.Concretes;
+using Repositories.UnıtOfWorks.Abstract;
+using Repositories.UnıtOfWorks.Concrate;
+using Service.Abstracts;
+using Service.Concretes;
 using System.Text;
 
 namespace AcsApi.Extensions

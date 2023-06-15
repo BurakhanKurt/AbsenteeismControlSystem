@@ -1,15 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Service.Layer.Abstracts;
+using Service.Abstracts;
 
-namespace Presentation.Layer.Controllers
+namespace Presentation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class SyllabusController : ControllerBase
     {
         private readonly IServiceManager _manager;
-
         public SyllabusController(IServiceManager manager)
         {
             _manager=manager;

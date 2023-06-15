@@ -1,5 +1,5 @@
 ﻿
-namespace Repositories.Layer.UnıtOfWorks.Abstract
+namespace Repositories.UnıtOfWorks.Abstract
 {
     public interface IUnitOfWork
     {

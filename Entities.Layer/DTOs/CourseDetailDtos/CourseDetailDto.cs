@@ -1,7 +1,5 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
-
-namespace Entities.Layer.DTOs.CourseDetailDtos
+namespace Entities.DTOs.CourseDetailDtos
 {
     public record CourseDetailDto
     {

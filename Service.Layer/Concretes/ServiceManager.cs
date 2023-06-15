@@ -1,6 +1,6 @@
-﻿using Service.Layer.Abstracts;
+﻿using Service.Abstracts;
 
-namespace Service.Layer.Concretes
+namespace Service.Concretes
 {
     public class ServiceManager : IServiceManager
     {

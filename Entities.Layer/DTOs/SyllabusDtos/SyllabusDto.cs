@@ -1,9 +1,7 @@
 ﻿
+using Entities.DTOs.CourseCalendarDtos;
 
-using Entities.Layer.DTOs.CourseCalendarDtos;
-using Entities.Layer.Models;
-
-namespace Entities.Layer.DTOs.SyllabusDtos
+namespace Entities.DTOs.SyllabusDtos
 {
     public record SyllabusDto
     {

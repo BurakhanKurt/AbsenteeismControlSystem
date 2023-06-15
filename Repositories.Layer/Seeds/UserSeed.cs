@@ -1,9 +1,9 @@
-﻿using Entities.Layer.Models;
+﻿using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Repositories.Layer.Seeds
+namespace Repositories.Seeds
 {
     public class UserSeed : IEntityTypeConfiguration<User>
     {

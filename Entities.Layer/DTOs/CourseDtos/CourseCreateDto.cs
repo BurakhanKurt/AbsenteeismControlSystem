@@ -1,12 +1,7 @@
 ﻿
-using Entities.Layer.DTOs.CourseDetailDtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Entities.DTOs.CourseDetailDtos;
 
-namespace Entities.Layer.DTOs.CourseDtos
+namespace Entities.DTOs.CourseDtos
 {
     public record CourseCreateDto : CourseDto
     {

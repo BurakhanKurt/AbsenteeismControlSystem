@@ -1,8 +1,8 @@
-﻿using Entities.Layer.DTOs;
-using Entities.Layer.DTOs.CourseDetailDtos;
-using Entities.Layer.Models;
+﻿using Entities.DTOs;
+using Entities.DTOs.CourseDetailDtos;
+using Entities.Models;
 
-namespace Service.Layer.Abstracts
+namespace Service.Abstracts
 {
     public interface ICourseDetailService 
     {

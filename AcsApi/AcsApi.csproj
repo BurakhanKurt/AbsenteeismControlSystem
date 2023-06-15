@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities.Layer\Entities.Layer.csproj" />
-    <ProjectReference Include="..\Presentation.Layer\Presentation.Layer.csproj" />
-    <ProjectReference Include="..\Repositories.Layer\Repositories.Layer.csproj" />
-    <ProjectReference Include="..\Service.Layer\Service.Layer.csproj" />
+    <ProjectReference Include="..\Entities.Layer\Entities.csproj" />
+    <ProjectReference Include="..\Presentation.Layer\Presentation.csproj" />
+    <ProjectReference Include="..\Repositories.Layer\Repositories.csproj" />
+    <ProjectReference Include="..\Service.Layer\Service.csproj" />
   </ItemGroup>
 
 </Project>

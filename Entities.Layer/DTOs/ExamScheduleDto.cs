@@ -1,7 +1,7 @@
-﻿using Entities.Layer.DTOs.CourseDtos;
+﻿
+using Entities.DTOs.CourseDtos;
 
-
-namespace Entities.Layer.DTOs
+namespace Entities.DTOs
 {
     public record ExamScheduleDto 
     {

@@ -1,6 +1,6 @@
 ﻿
 
-namespace Entities.Layer.DTOs.CourseCalendarDtos
+namespace Entities.DTOs.CourseCalendarDtos
 {
     public record CourseCalendarDto
     {

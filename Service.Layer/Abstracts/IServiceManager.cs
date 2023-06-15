@@ -1,5 +1,5 @@
 ﻿
-namespace Service.Layer.Abstracts
+namespace Service.Abstracts
 {
     public interface IServiceManager
     {

@@ -1,8 +1,9 @@
-﻿using Entities.Layer.Models;
+﻿
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Repositories.Layer.Configurations
+namespace Repositories.Configurations
 {
     public class CourseDatailConfiguration : IEntityTypeConfiguration<CourseDetail>
     {

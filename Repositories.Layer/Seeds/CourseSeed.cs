@@ -1,9 +1,9 @@
 ﻿
-using Entities.Layer.Models;
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Repositories.Layer.Seeds
+namespace Repositories.Seeds
 {
     public class CourseSeed : IEntityTypeConfiguration<Course>
     {
