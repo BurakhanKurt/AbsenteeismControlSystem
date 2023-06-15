@@ -6,6 +6,8 @@ namespace Service.Abstracts
 {
     public interface IAuthenticationService
     {
-        Task<IdentityResult> RegisterUser(UserForRegistrationDto userForRegistrationDto); 
+        Task<IdentityResult> RegisterUserAsync(UserForRegistrationDto userForRegistrationDto); 
+        Task<bool> ValidateUserAsync(UserForAuthenticationDto userForAuthDto);
+        string CreateToken();
     }
 }

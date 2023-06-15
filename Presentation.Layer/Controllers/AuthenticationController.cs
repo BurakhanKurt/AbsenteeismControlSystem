@@ -5,6 +5,7 @@ using Service.Abstracts;
 
 namespace Presentation.Controllers
 {
+
     [ApiController]
     [Route("api/authentication")]
     public class AuthenticationController : ControllerBase
@@ -21,7 +22,7 @@ namespace Presentation.Controllers
         {
             var result = await _manager
                 .AuthenticationService
-                .RegisterUser(userForRegistrationDto);
+                .RegisterUserAsync(userForRegistrationDto);
 
             if(!result.Succeeded)
             {
@@ -31,7 +32,36 @@ namespace Presentation.Controllers
                 }
                 return BadRequest(ModelState);
             }
-            return StatusCode(201);
+
+            var userForAuthDto = new UserForAuthenticationDto()
+            {
+                UserName = userForRegistrationDto.UserName,
+                Password = userForRegistrationDto.Password,
+            };
+
+            if(!await _manager.AuthenticationService.ValidateUserAsync(userForAuthDto))
+                return Unauthorized();
+
+            var token = _manager
+                .AuthenticationService
+                .CreateToken();
+
+            return Ok(token);
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Authenticate(
+            [FromBody] UserForAuthenticationDto userForAuthenticationDto)
+        {
+            if (!await _manager.AuthenticationService.ValidateUserAsync(userForAuthenticationDto))
+                return Unauthorized();
+
+            var token = _manager
+                .AuthenticationService
+                .CreateToken();
+
+            return Ok(token);
+        }
+
     }
 }

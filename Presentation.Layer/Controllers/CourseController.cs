@@ -1,11 +1,14 @@
 ﻿
 using Entities.DTOs.CourseDtos;
 using Entities.Params;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
+using System.Net;
 
 namespace Presentation.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]s")]
     public class CourseController : ControllerBase
@@ -16,9 +19,10 @@ namespace Presentation.Controllers
             _serviceManager = serviceManager;
         }
         
-        [HttpPost("create/{user:int}")]
-        public async Task<IActionResult> CreateOneCourseAsync([FromRoute(Name = "user")] int userId, [FromBody] CourseCreateDto courseCreateDto)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateOneCourseAsync([FromBody] CourseCreateDto courseCreateDto)
         {
+            var userId = _serviceManager.userId(HttpContext.User);
             var course = await _serviceManager.CourseServices.CreateOneCourseAsync(userId, courseCreateDto);
             return StatusCode(201, course);
         }
@@ -38,17 +42,19 @@ namespace Presentation.Controllers
             return NoContent();
         }
 
-        [HttpGet("byuser/{user:int}")]
-        public async Task<IActionResult> GetAllCourseByUserAsync([FromRoute(Name = "user")] int userId)
+        [HttpGet("byuser")]
+        public async Task<IActionResult> GetAllCourseByUserAsync()
         {
+            var userId = _serviceManager.userId(HttpContext.User);
             var courses = await _serviceManager.CourseServices.GetAllCourseByUserAsync(userId, false);
             return Ok(courses);
         }
 
-        [HttpGet("today",Name = "GetAllUserCoursesByDayAndTimeAsync")]
-        public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromQuery] CourseDayAndUserParams myParams)
+        [HttpGet("today")]
+        public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromRoute] byte dayId)
         {
-            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(myParams.usId, myParams.daId, false);
+            var userId = _serviceManager.userId(HttpContext.User);
+            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(userId, dayId, false);
             return Ok(courses);
         }
 

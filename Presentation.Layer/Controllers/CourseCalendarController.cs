@@ -1,17 +1,18 @@
 ﻿
 using Entities.DTOs.CourseCalendarDtos;
 using Entities.Params;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
 
 namespace Presentation.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]s")]
     public class CourseCalendarController : ControllerBase
     {
         private readonly IServiceManager _manager;
-
         public CourseCalendarController(IServiceManager manager)
         {
             _manager=manager;

@@ -1,8 +1,10 @@
 ﻿
 using Entities.DTOs.CourseDetailDtos;
+using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
+using Service.Concretes;
 
 namespace Presentation.Controllers
 {
@@ -11,17 +13,17 @@ namespace Presentation.Controllers
     [Route("api/[controller]s")]
     public class CourseDetailController : ControllerBase
     {
-        private readonly IServiceManager _manager;
-        public CourseDetailController(IServiceManager manager)
+        private readonly IServiceManager _serviceManager;
+        public CourseDetailController(IServiceManager serviceManager)
         {
-            _manager=manager;
+            _serviceManager = serviceManager;
         }
 
         [HttpPut("{id:int}")] 
         public async Task<IActionResult> UpdateOneCourseDetailAsync([FromRoute(Name = "id")]int id,
             [FromBody]CourseDetailDto courseDetailDto)
         {
-            await _manager
+            await _serviceManager
                 .CourseDetailService
                 .UpdateOneCourseDetailAsync(id, courseDetailDto, false);
             return NoContent();
@@ -31,7 +33,7 @@ namespace Presentation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneCourseDetailAsync([FromRoute(Name = "id")]int id)
         {
-            var courseDetailDto = await _manager
+            var courseDetailDto = await _serviceManager
                 .CourseDetailService
                 .GetOneCourseDetailAsync(id, false);
             return Ok(courseDetailDto);

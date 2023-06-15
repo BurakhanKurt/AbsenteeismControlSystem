@@ -1,25 +1,32 @@
 ﻿
+using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
+using Service.Concretes;
+using System.Net;
 
 namespace Presentation.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]")]
     public class SyllabusController : ControllerBase
     {
-        private readonly IServiceManager _manager;
-        public SyllabusController(IServiceManager manager)
+        private readonly IServiceManager _serviceManager;
+        public SyllabusController(IServiceManager serviceManager)
         {
-            _manager=manager;
+            _serviceManager = serviceManager;
         }
-        
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetSyllabusAsync([FromRoute(Name = "id")] int id)
+
+        [HttpGet]
+        public async Task<IActionResult> GetSyllabusAsync()
         {
-            var syllabusDto = await _manager
+            var userId = _serviceManager.userId(HttpContext.User);
+
+            var syllabusDto = await _serviceManager
                 .SyllebusService
-                .GetSyllabusAsyncByUserIdAsync(id, false);
+                .GetSyllabusAsyncByUserIdAsync(userId, false);
 
             return Ok(syllabusDto);
         }

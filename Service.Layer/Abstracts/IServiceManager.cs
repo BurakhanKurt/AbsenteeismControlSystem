@@ -1,4 +1,6 @@
 ﻿
+using System.Security.Claims;
+
 namespace Service.Abstracts
 {
     public interface IServiceManager
@@ -8,6 +10,7 @@ namespace Service.Abstracts
         ICourseCalendarService CourseCalendarService { get; }
         ISyllabusService SyllebusService { get; }
         IAuthenticationService AuthenticationService { get; }
+        int userId(ClaimsPrincipal? context);
 
     }
 }

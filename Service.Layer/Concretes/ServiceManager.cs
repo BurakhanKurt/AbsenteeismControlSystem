@@ -1,4 +1,6 @@
-﻿using Service.Abstracts;
+﻿using Entities.Models;
+using Service.Abstracts;
+using System.Security.Claims;
 
 namespace Service.Concretes
 {
@@ -8,7 +10,6 @@ namespace Service.Concretes
         private readonly ICourseDetailService courseDetailService;
         private readonly ICourseCalendarService courseCalendarService;
         private readonly ISyllabusService syllebusService;
-
         private readonly IAuthenticationService authenticationService;
         public ServiceManager(ICourseService courseService,
             ICourseDetailService courseDetailService,
@@ -32,5 +33,15 @@ namespace Service.Concretes
         public ISyllabusService SyllebusService => syllebusService;
         
         public IAuthenticationService AuthenticationService => authenticationService;
+
+        public int userId(ClaimsPrincipal? context)
+        {
+            var id = Convert.ToInt32(
+                context.
+                Claims.
+                FirstOrDefault(d => d.Type == "key").Value
+            );
+            return id;
+        }
     }
 }
