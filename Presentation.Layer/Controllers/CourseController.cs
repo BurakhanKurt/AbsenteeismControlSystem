@@ -1,10 +1,9 @@
 ﻿
 using Entities.DTOs.CourseDtos;
-using Entities.Params;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
-using System.Net;
+using Service.Concretes;
 
 namespace Presentation.Controllers
 {
@@ -22,7 +21,7 @@ namespace Presentation.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateOneCourseAsync([FromBody] CourseCreateDto courseCreateDto)
         {
-            var userId = _serviceManager.userId(HttpContext.User);
+            var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
             var course = await _serviceManager.CourseServices.CreateOneCourseAsync(userId, courseCreateDto);
             return StatusCode(201, course);
         }
@@ -45,16 +44,19 @@ namespace Presentation.Controllers
         [HttpGet("byuser")]
         public async Task<IActionResult> GetAllCourseByUserAsync()
         {
-            var userId = _serviceManager.userId(HttpContext.User);
-            var courses = await _serviceManager.CourseServices.GetAllCourseByUserAsync(userId, false);
+            var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
+            var courses = await _serviceManager.CourseServices
+                .GetAllCourseByUserAsync(userId, false);
+
             return Ok(courses);
         }
 
         [HttpGet("today")]
         public async Task<IActionResult> GetAllUserCoursesByDayAndTimeAsync([FromRoute] byte dayId)
         {
-            var userId = _serviceManager.userId(HttpContext.User);
-            var courses = await _serviceManager.CourseServices.GetAllUserCoursesByDayAndTimeAsync(userId, dayId, false);
+            var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
+            var courses = await _serviceManager.CourseServices
+                .GetAllUserCoursesByDayAndTimeAsync(userId, dayId, false);
             return Ok(courses);
         }
 

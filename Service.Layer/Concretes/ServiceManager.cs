@@ -11,11 +11,13 @@ namespace Service.Concretes
         private readonly ICourseCalendarService courseCalendarService;
         private readonly ISyllabusService syllebusService;
         private readonly IAuthenticationService authenticationService;
+        
         public ServiceManager(ICourseService courseService,
             ICourseDetailService courseDetailService,
             ICourseCalendarService courseCalendarService,
             ISyllabusService syllebusService,
-            IAuthenticationService authenticationService)
+            IAuthenticationService authenticationService
+            )
         {
             this.courseService=courseService;
             this.courseDetailService=courseDetailService;
@@ -34,14 +36,5 @@ namespace Service.Concretes
         
         public IAuthenticationService AuthenticationService => authenticationService;
 
-        public int userId(ClaimsPrincipal? context)
-        {
-            var id = Convert.ToInt32(
-                context.
-                Claims.
-                FirstOrDefault(d => d.Type == "key").Value
-            );
-            return id;
-        }
     }
 }

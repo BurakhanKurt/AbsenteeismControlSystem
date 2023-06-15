@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
+using Service.Concretes;
 
 namespace Presentation.Controllers
 {
@@ -18,7 +19,7 @@ namespace Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetExamScheduleByUser()
         {
-            var userId = _serviceManager.userId(HttpContext.User);
+            var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
             var details = await _serviceManager
                 .CourseDetailService 
                 .GetExamScheduleByUser(userId, false);

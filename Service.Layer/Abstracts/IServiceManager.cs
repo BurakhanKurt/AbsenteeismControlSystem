@@ -10,7 +10,6 @@ namespace Service.Abstracts
         ICourseCalendarService CourseCalendarService { get; }
         ISyllabusService SyllebusService { get; }
         IAuthenticationService AuthenticationService { get; }
-        int userId(ClaimsPrincipal? context);
 
     }
 }

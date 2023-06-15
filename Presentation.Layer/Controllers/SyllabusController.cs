@@ -22,7 +22,7 @@ namespace Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSyllabusAsync()
         {
-            var userId = _serviceManager.userId(HttpContext.User);
+            var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
 
             var syllabusDto = await _serviceManager
                 .SyllebusService
