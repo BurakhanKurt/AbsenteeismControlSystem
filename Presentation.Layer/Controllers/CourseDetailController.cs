@@ -5,6 +5,7 @@ using Service.Layer.Abstracts;
 
 namespace Presentation.Layer.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [Route("api/[controller]s")]
     public class CourseDetailController : ControllerBase
@@ -25,7 +26,7 @@ namespace Presentation.Layer.Controllers
             return NoContent();
         }
 
-        [Authorize]
+        
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneCourseDetailAsync([FromRoute(Name = "id")]int id)
         {

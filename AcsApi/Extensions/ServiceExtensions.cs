@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repositories.Layer;
 using Repositories.Layer.Repositories.Abstracts;
@@ -43,6 +44,7 @@ namespace AcsApi.Extensions
             services.AddScoped<ICourseCalendarService, CourseCalenderManager>();
             services.AddScoped<ISyllabusService, SyllabusManager>();
             services.AddScoped<IServiceManager, ServiceManager>();
+            services.AddScoped<IAuthenticationService, AuthenticationManager>();
         }
 
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -61,34 +63,32 @@ namespace AcsApi.Extensions
                 .AddDefaultTokenProviders();
         }
 
-        public static void ConfigureAuthenticationService(this IServiceCollection services)
-        {
-            services.AddScoped<IAuthenticationService, AuthenticationManager>();
-        }
-
         public static void ConfigureJWT(this IServiceCollection services,
             IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings["secretKey"];
 
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = jwtSettings["validIssuer"],
+                ValidAudience = jwtSettings["validAudience"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+            };
+            //Todo Bu yeni eklendi ne olduguna bakılacak
+            services.AddSingleton(tokenValidationParameters);
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-            }).AddJwtBearer(options =>
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["validIssuer"],
-                    ValidAudience = jwtSettings["validAudience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
-                }
-            );
+            })
+                .AddJwtBearer(options =>
+                    options.TokenValidationParameters = tokenValidationParameters
+                );
             
         }
     }

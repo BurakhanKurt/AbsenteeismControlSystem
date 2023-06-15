@@ -1,11 +1,17 @@
 using AcsApi.AutoMapper;
 using AcsApi.Extensions;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(opt =>
+{
+    var policy = new AuthorizationPolicyBuilder("Bearer").RequireAuthenticatedUser().Build();
+    opt.Filters.Add(new AuthorizeFilter(policy));
+})
 .AddNewtonsoftJson(opt =>
 {
     opt.SerializerSettings.ReferenceLoopHandling =
@@ -24,7 +30,6 @@ builder.Services.AddAutoMapper(typeof(MapProfile));
 builder.Services.ConfigureJWT(builder.Configuration);
 // Configure Identity
 builder.Services.ConfigureIdentity();
-builder.Services.ConfigureAuthenticationService();
 
 var app = builder.Build();
 
