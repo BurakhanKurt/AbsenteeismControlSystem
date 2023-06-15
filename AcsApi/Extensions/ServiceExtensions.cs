@@ -79,8 +79,9 @@ namespace AcsApi.Extensions
                 ValidAudience = jwtSettings["validAudience"],
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
             };
-            //Todo Bu yeni eklendi ne olduguna bakılacak
+
             services.AddSingleton(tokenValidationParameters);
+
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

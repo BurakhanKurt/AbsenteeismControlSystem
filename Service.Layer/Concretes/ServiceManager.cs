@@ -29,7 +29,7 @@ namespace Service.Layer.Concretes
         public ICourseCalendarService CourseCalendarService => courseCalendarService;
 
         public ISyllabusService SyllebusService => syllebusService;
-
+        
         public IAuthenticationService AuthenticationService => authenticationService;
     }
 }

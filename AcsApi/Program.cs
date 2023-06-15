@@ -7,11 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(opt =>
-{
-    var policy = new AuthorizationPolicyBuilder("Bearer").RequireAuthenticatedUser().Build();
-    opt.Filters.Add(new AuthorizeFilter(policy));
-})
+builder.Services.AddControllers()
 .AddNewtonsoftJson(opt =>
 {
     opt.SerializerSettings.ReferenceLoopHandling =
