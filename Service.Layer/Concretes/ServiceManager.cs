@@ -8,6 +8,7 @@ namespace Service.Layer.Concretes
         private readonly ICourseDetailService courseDetailService;
         private readonly ICourseCalendarService courseCalendarService;
         private readonly ISyllabusService syllebusService;
+
         private readonly IAuthenticationService authenticationService;
         public ServiceManager(ICourseService courseService,
             ICourseDetailService courseDetailService,
