@@ -1,9 +1,11 @@
 ﻿
 using Entities.DTOs.CourseDtos;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.Abstracts;
 using Service.Concretes;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -42,11 +44,18 @@ namespace Presentation.Controllers
         }
 
         [HttpGet("byuser")]
-        public async Task<IActionResult> GetAllCourseByUserAsync()
+        public async Task<IActionResult> GetAllCourseByUserAsync(
+            [FromQuery]PageListParameters pageListParameters)
         {
             var userId = TokenHelper.GetUserIdFromToken(HttpContext.User);
             var courses = await _serviceManager.CourseServices
-                .GetAllCourseByUserAsync(userId, false);
+                .GetAllCourseByUserAsync(pageListParameters,userId, false);
+            var metaData = await _serviceManager
+                .CourseServices
+                .MetaData(userId, pageListParameters);
+
+            Response.Headers.Add("Pagination",
+                JsonSerializer.Serialize(metaData));
 
             return Ok(courses);
         }

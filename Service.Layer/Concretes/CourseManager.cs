@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.DTOs.CourseDtos;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Repositories.Repositories.Abstracts;
 using Service.Abstracts;
 
@@ -39,9 +40,13 @@ namespace Service.Concretes
         }
 
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
-        public async Task<IEnumerable<CourseDto>> GetAllCourseByUserAsync(int userId, bool trackChanges)
+        public async Task<IEnumerable<CourseDto>> GetAllCourseByUserAsync(
+            PageListParameters pageListParameters, int userId, bool trackChanges)
         {
-            var courses = await _repositoryManager.Course.GetAllCourseByUserAsync(userId, trackChanges);
+            var courses = await _repositoryManager
+                .Course
+                .GetAllCourseByUserAsync(pageListParameters,userId, trackChanges);
+
             var response = _mapper.Map<List<CourseDto>>(courses);
             return response;
         }
@@ -83,6 +88,20 @@ namespace Service.Concretes
             entity.UpdateDate= DateTime.Now;
             _repositoryManager.Course.UpdateOneCourse(entity);
             await _repositoryManager.SaveAsync();
+        }
+        public async Task<MetaData> MetaData(int userId,PageListParameters pageListParameters)
+        {
+            var count = await _repositoryManager.Course.CountAsync(u => u.UserId == userId);
+            var pageSize = pageListParameters.PageSize;
+            var pageNumber = pageListParameters.PageNumber;
+
+            return new MetaData()
+            {
+                TotalCount = count,
+                TotalPage = (int)Math.Ceiling(count/(double)pageSize),
+                CurrentPage = pageNumber,
+                PageSize = pageSize
+            };
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Presentation.Controllers
             await _serviceManager
                 .CourseDetailService
                 .UpdateOneCourseDetailAsync(id, courseDetailDto, false);
+
             return NoContent();
         }
 

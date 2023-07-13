@@ -1,6 +1,7 @@
 ﻿using Entities.DTOs.CourseDtos;
 
 using Entities.Models;
+using Entities.RequestFeatures;
 
 namespace Service.Abstracts
 {   
@@ -16,7 +17,8 @@ namespace Service.Abstracts
         Task DeleteOneCourseAsync(int id, bool trackChanges);
 
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
-        Task<IEnumerable<CourseDto>> GetAllCourseByUserAsync(int userId, bool trackChanges);
+        Task<IEnumerable<CourseDto>> GetAllCourseByUserAsync(
+            PageListParameters pageListParameters,int userId, bool trackChanges);
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları asenkron olarak getirir
         Task<IEnumerable<TodayCoursesDto>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges);
@@ -29,6 +31,7 @@ namespace Service.Abstracts
 
         // Belirli bir kursu asenkron olarak kurs idsine göre getirir
         Task<CourseDto> GetOneCourseByIdAsync(int courseId, bool trackChanges);
+        Task<MetaData> MetaData(int userId, PageListParameters pageListParameters);
     }
 }
 

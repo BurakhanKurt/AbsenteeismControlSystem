@@ -22,10 +22,15 @@ namespace Repositories.Repositories.Concretes
             trackChanges ?
             _context.Set<T>().Where(expression).AsTracking() :
             _context.Set<T>().Where(expression).AsNoTracking();
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression) => 
+            await _context.Set<T>().AnyAsync(expression);
 
         public async Task CreateAsync(T entity) => await _context.Set<T>().AddAsync(entity);
         public void Create(T entity) => _context.Set<T>().Add(entity);
         public void Delete(T entity) => _context.Set<T>().Remove(entity);
         public void Update(T entity) => _context.Set<T>().Update(entity);
+        public async Task<int> CountAsync(Expression<Func<T, bool>> expression) => 
+            await _context.Set<T>().CountAsync(expression);
+
     }
 }

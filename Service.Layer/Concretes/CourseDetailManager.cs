@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Entities.DTOs;
 using Entities.DTOs.CourseDetailDtos;
+using Entities.Exceptions.CourseDetailException;
 using Entities.Models;
 using Repositories.Repositories.Abstracts;
 using Service.Abstracts;
@@ -18,25 +19,30 @@ namespace Service.Concretes
             _mapper=mapper;
         }
 
-        public async Task<CourseDetailDto> GetOneCourseDetailAsync(int courseDetailId, bool trackChanges)
+        public async Task<CourseDetailDto> GetOneCourseDetailAsync(int courseId, bool trackChanges)
         {
-            var courseDetail = await _manager
-                .CourseDetail
-                .GetOneCourseDetailByIdAsync(courseDetailId, trackChanges);
+            var courseDetail = await 
+                GetOneCourseDetailByIdCheckExistAsync(courseId, trackChanges);
+
             var courseDetailDto = _mapper.Map<CourseDetailDto>(courseDetail);
+
             return courseDetailDto;
         }
 
         public async Task UpdateOneCourseDetailAsync(int courseId, CourseDetailDto courseDetailDto, bool trackChanges)
         {
-            var entity = await _manager.CourseDetail.GetOneCourseDetailByIdAsync(courseId, trackChanges);
-            // Todo Hata yonetimi yapılacak
+            if(courseDetailDto == null)
+                throw new DetailBadRequestException();
+
+            var entity = await 
+                GetOneCourseDetailByIdCheckExistAsync(courseId, trackChanges);
 
             entity = _mapper.Map(courseDetailDto,entity);
             entity.CourseId = courseId;
             entity.UpdateDate = DateTime.Now;  
 
             _manager.CourseDetail.UpdateOneCourseDetail(entity);
+
             await _manager.SaveAsync();
         }
 
@@ -46,6 +52,18 @@ namespace Service.Concretes
             var response = _mapper.Map<List<ExamScheduleDto>>(details);
             
             return response;
+        }
+
+        private async Task<CourseDetail> GetOneCourseDetailByIdCheckExistAsync(int courseId,bool trackChanges)
+        {
+            var entity = await _manager
+                .CourseDetail
+                .GetOneCourseDetailByIdAsync(courseId, trackChanges);
+
+            if (entity == null)
+                throw new DetailNotFoundException(courseId);
+
+            return entity;
         }
     }
 }

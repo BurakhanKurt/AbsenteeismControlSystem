@@ -1,5 +1,7 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Extensions;
 using Repositories.Repositories.Abstracts;
 
 namespace Repositories.Repositories.Concretes
@@ -11,10 +13,14 @@ namespace Repositories.Repositories.Concretes
         }
 
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
-        public async Task<IEnumerable<Course>> GetAllCourseByUserAsync(int userId, bool trackChanges)
+        public async Task<IEnumerable<Course>> GetAllCourseByUserAsync(
+            PageListParameters pageListParameters,int userId, bool trackChanges)
         {
-            var courses = await GetByCondition(c => c.UserId == userId, trackChanges).Include(x => x.CourseDetail)
+            var courses = await GetByCondition(c => c.UserId == userId, trackChanges)
+                .Include(x => x.CourseDetail)
+                .ToPageList(pageListParameters.PageNumber,pageListParameters.PageSize)
                 .ToListAsync();
+
             return courses;
         }
 

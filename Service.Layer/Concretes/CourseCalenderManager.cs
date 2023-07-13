@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Entities.DTOs.CourseCalendarDtos;
+using Entities.Exceptions.CourseCalendarException;
 using Entities.Models;
 using Repositories.Repositories.Abstracts;
 using Service.Abstracts;
@@ -21,16 +22,16 @@ namespace Service.Concretes
             var courseCalendars = await 
                 _manager.CourseCalendar
                 .GetAllCourseCalendarAsync(courseId, trackChanges);
+
             var courseCalendarDtos = _mapper.Map<List<CourseCalendarDto>>(courseCalendars);
-            // Todo Hata yonetimini unutma
+            
             return courseCalendarDtos; 
         }
 
         public async Task<CourseCalendarDto> GetOneCourseCalendarAsync(int courseId, byte dayId, bool trackChanges)
         {
             var courseCalendar = await 
-                _manager.CourseCalendar
-                .GetOneCourseCalendarByIdAsync(courseId, dayId, trackChanges);
+                GetOneCourseCalendarByIdCheckExist(courseId, dayId, trackChanges);
 
             var courseCalendarDto = _mapper.Map<CourseCalendarDto>(courseCalendar);
             return courseCalendarDto;
@@ -38,10 +39,8 @@ namespace Service.Concretes
         public async Task UpdateOneCourseCalendarAsync(int courseId,
             byte dayId, CourseCalendarDto courseCalendarDto, bool trackChanges)
         {
-            var entity = await _manager
-                .CourseCalendar
-                .GetOneCourseCalendarByIdAsync(courseId, dayId, trackChanges);
-            // Todo Hata yönetimi yapılacak
+            var entity = await
+                GetOneCourseCalendarByIdCheckExist(courseId,dayId,trackChanges);
             
             entity = _mapper.Map(courseCalendarDto, entity);
             entity.CourseId = courseId;
@@ -54,17 +53,23 @@ namespace Service.Concretes
 
         public async Task DeleteOneCourseCalendarAsync(int courseId, byte dayId, bool trackChanges)
         {
-            var courseCalendar = await _manager
-                .CourseCalendar.
-                GetOneCourseCalendarByIdAsync(courseId, dayId, trackChanges);
-            // Todo hata yönetimi yapılacak
+            var courseCalendar = 
+                await GetOneCourseCalendarByIdCheckExist(courseId, dayId, trackChanges);
 
             _manager.CourseCalendar.DeleteOneCourseCalendar(courseCalendar);
+
             await _manager.SaveAsync();
         }
 
         public async Task<CourseCalendar> CreateOneCourseCalendarAsync(int courseId,byte dayId,CourseCalendarDto courseCalendarDto)
         {
+            var result = await _manager
+                .CourseCalendar
+                .CourseCalenderExistWithAny(courseId, dayId);
+
+            if (result)
+                throw new CalendarBadRequestException(courseId, dayId);
+
             var calendar = _mapper.Map<CourseCalendar>(courseCalendarDto);
             calendar.CourseId = courseId;
             calendar.DayId = dayId;
@@ -73,6 +78,18 @@ namespace Service.Concretes
             await _manager.SaveAsync();
 
             return calendar;
+        }
+
+        private async Task<CourseCalendar> GetOneCourseCalendarByIdCheckExist(int courseId, byte dayId, bool trackChanges)
+        {
+            var courseCalendar = await
+                _manager.CourseCalendar
+                .GetOneCourseCalendarByIdAsync(courseId, dayId, trackChanges);
+            
+            if (courseCalendar == null)
+                throw new CalendarNotFoundException(courseId,dayId);
+
+            return courseCalendar;
         }
     }
 }

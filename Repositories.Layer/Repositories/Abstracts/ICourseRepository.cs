@@ -1,12 +1,14 @@
 ﻿
 using Entities.Models;
+using Entities.RequestFeatures;
 
 namespace Repositories.Repositories.Abstracts
 {
     public interface ICourseRepository : IRepositoryBase<Course>
     {
         // Belirli bir kullanıcının tüm kurslarını asenkron olarak getirir
-        Task<IEnumerable<Course>> GetAllCourseByUserAsync(int userId, bool trackChanges);
+        Task<IEnumerable<Course>> GetAllCourseByUserAsync(
+            PageListParameters pageListParameters, int userId, bool trackChanges);
 
         // Belirli bir kullanıcının belirli bir günde aldığı tüm kursları saati ile asenkron olarak getirir
         Task<IEnumerable<Course>> GetAllUserCoursesByDayAndTimeAsync(int userId, byte dayId, bool trackChanges);

@@ -7,9 +7,11 @@ namespace Repositories.Repositories.Abstracts
     {
         IQueryable<T> GetAll(bool trackChanges);
         IQueryable<T> GetByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         void Update(T entity);
         void Delete(T entity);
         void Create(T entity);
         Task CreateAsync(T entity);
+        Task<int> CountAsync(Expression<Func<T, bool>> expression);
     }
 }

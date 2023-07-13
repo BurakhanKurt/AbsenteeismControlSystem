@@ -25,12 +25,20 @@ namespace Repositories.Repositories.Concretes
                 .SingleOrDefaultAsync();
             return courseCalendar;
         }
-        public void DeleteOneCourseCalendar(CourseCalendar courseCalendar) => Delete(courseCalendar);
+        public async Task<bool> CourseCalenderExistWithAny(int courseId, byte dayId)
+        {
+            var result = 
+                await AnyAsync(cc => cc.CourseId == courseId &&  cc.DayId == dayId);
 
+            return result;
+        }
+
+        public void DeleteOneCourseCalendar(CourseCalendar courseCalendar) => Delete(courseCalendar);
 
         public void UpdateOneCourseCalendar(CourseCalendar courseCalendar) => Update(courseCalendar);
 
         public async Task CreateOneCourseCalendarAsync(CourseCalendar courseCalendar) => 
             await CreateAsync(courseCalendar);
+
     }
 }
